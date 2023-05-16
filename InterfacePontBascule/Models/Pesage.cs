@@ -18,12 +18,15 @@ namespace InterfacePontBascule.Models
         //public Transporteur Transporteur { get; set; }
 
         public string Transporteur { get; set; }
+
+
+
         public string TypeTransport { get; set; }
         public string TypeCamion { get; set; }
-        public DateTime DateOP { get; set; }
-        public TimeSpan HeureOP { get; set; }
+    
+    //    public TimeSpan HeureOP { get; set; }
         public string NumTicket { get; set; }
-
+    public DateTime DateOP { get; set; }
         public int PCC { get; set; } //pesage a charge
 
         public int PCV { get; set; } //pesage a vide

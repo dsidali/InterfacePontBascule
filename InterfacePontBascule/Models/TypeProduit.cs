@@ -3,7 +3,7 @@
     public class TypeProduit
     {
         public int Id { get; set; }
-        public string TypedeProduit { get; set; } //dechets or ronds a beton
+        public string TypeDeProduit { get; set; } //dechets or ronds a beton
 
     }
 }

@@ -31,16 +31,30 @@ namespace InterfacePontBascule.Models
 
         public int PQS { get; set; }
 
-        public bool Termine { get; set; }
+
         public string Observation { get; set; }
 
         public string FournisseurOuClient { get; set; }
 
 
         public string Transporteur { get; set; }
-        public string TypeTransport { get; set; }
-        public string TypeCamion { get; set; }
 
-        public string Diametre { get; set; }
+
+
+
+
+        public int TypeDeTransportId { get; set; }
+        public TypeDeTransport TypeDeTransport { get; set; }//Tosyali or safhadid
+
+        public int TypeDeCamionId { get; set; }
+        public TypeDeCamion TypeDeCamion { get; set; }
+
+
+
+
+
+
+        public string Diametre { get; set; }       
+        public bool Termine { get; set; }
     }
 }

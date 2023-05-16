@@ -4,6 +4,7 @@ using InterfacePontBascule.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterfacePontBascule.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230515213211_CreateTypeDeTransportTable")]
+    partial class CreateTypeDeTransportTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,84 +24,6 @@ namespace InterfacePontBascule.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("InterfacePontBascule.Models.Achat", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DateOP")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Mat")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumBonA")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumTicket")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Observation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PB")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PCC")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PCV")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PQRa")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PQS")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ParcId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Source")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Termine")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Transporteur")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TypeDeCamionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TypeDeDechetId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TypeDeTransportId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParcId");
-
-                    b.HasIndex("TypeDeCamionId");
-
-                    b.HasIndex("TypeDeDechetId");
-
-                    b.HasIndex("TypeDeTransportId");
-
-                    b.ToTable("Achats");
-                });
 
             modelBuilder.Entity("InterfacePontBascule.Models.Parc", b =>
                 {
@@ -185,23 +110,6 @@ namespace InterfacePontBascule.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TypeDeTransports");
-                });
-
-            modelBuilder.Entity("InterfacePontBascule.Models.TypeProduit", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("TypeDeProduit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TypeProduits");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -404,41 +312,6 @@ namespace InterfacePontBascule.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("InterfacePontBascule.Models.Achat", b =>
-                {
-                    b.HasOne("InterfacePontBascule.Models.Parc", "Parc")
-                        .WithMany()
-                        .HasForeignKey("ParcId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("InterfacePontBascule.Models.TypeDeCamion", "TypeDeCamion")
-                        .WithMany()
-                        .HasForeignKey("TypeDeCamionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("InterfacePontBascule.Models.TypeDeDechet", "TypeDeDechet")
-                        .WithMany()
-                        .HasForeignKey("TypeDeDechetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("InterfacePontBascule.Models.TypeDeTransport", "TypeDeTransport")
-                        .WithMany()
-                        .HasForeignKey("TypeDeTransportId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Parc");
-
-                    b.Navigation("TypeDeCamion");
-
-                    b.Navigation("TypeDeDechet");
-
-                    b.Navigation("TypeDeTransport");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

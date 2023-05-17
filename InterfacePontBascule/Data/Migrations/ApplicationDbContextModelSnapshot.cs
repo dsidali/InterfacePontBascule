@@ -136,6 +136,225 @@ namespace InterfacePontBascule.Data.Migrations
                     b.ToTable("Parcs");
                 });
 
+            modelBuilder.Entity("InterfacePontBascule.Models.Pesage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateOP")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Mat")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumBonA")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumTicket")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Observation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PCC")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PCV")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParcId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QP")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Termine")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Transporteur")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TypeDeCamionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeDeTransportId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParcId");
+
+                    b.HasIndex("TypeDeCamionId");
+
+                    b.HasIndex("TypeDeTransportId");
+
+                    b.ToTable("Pesages");
+                });
+
+            modelBuilder.Entity("InterfacePontBascule.Models.ReceptionRondBeton", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateOp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Diametre")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Mat")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumBonA")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumTicket")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Observation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PB")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PCC")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PCV")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PQRa")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PQS")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParcId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Source")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Termine")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Transporteur")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TypeDeCamionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeDeTransportId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParcId");
+
+                    b.HasIndex("TypeDeCamionId");
+
+                    b.HasIndex("TypeDeTransportId");
+
+                    b.ToTable("ReceptionRondBetons");
+                });
+
+            modelBuilder.Entity("InterfacePontBascule.Models.SortieRondBeton", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateOp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Destination")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Diametre")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Mat")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumBonA")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumTicket")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Observation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PB")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PCC")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PCV")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PQRa")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PQS")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParcId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Source")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Termine")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Transporteur")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TypeDeCamionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeDeTransportId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParcId");
+
+                    b.HasIndex("TypeDeCamionId");
+
+                    b.HasIndex("TypeDeTransportId");
+
+                    b.ToTable("SortieRondBetons");
+                });
+
             modelBuilder.Entity("InterfacePontBascule.Models.TypeDeCamion", b =>
                 {
                     b.Property<int>("Id")
@@ -437,6 +656,87 @@ namespace InterfacePontBascule.Data.Migrations
                     b.Navigation("TypeDeCamion");
 
                     b.Navigation("TypeDeDechet");
+
+                    b.Navigation("TypeDeTransport");
+                });
+
+            modelBuilder.Entity("InterfacePontBascule.Models.Pesage", b =>
+                {
+                    b.HasOne("InterfacePontBascule.Models.Parc", "Parc")
+                        .WithMany()
+                        .HasForeignKey("ParcId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InterfacePontBascule.Models.TypeDeCamion", "TypeDeCamion")
+                        .WithMany()
+                        .HasForeignKey("TypeDeCamionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InterfacePontBascule.Models.TypeDeTransport", "TypeDeTransport")
+                        .WithMany()
+                        .HasForeignKey("TypeDeTransportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Parc");
+
+                    b.Navigation("TypeDeCamion");
+
+                    b.Navigation("TypeDeTransport");
+                });
+
+            modelBuilder.Entity("InterfacePontBascule.Models.ReceptionRondBeton", b =>
+                {
+                    b.HasOne("InterfacePontBascule.Models.Parc", "Parc")
+                        .WithMany()
+                        .HasForeignKey("ParcId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InterfacePontBascule.Models.TypeDeCamion", "TypeDeCamion")
+                        .WithMany()
+                        .HasForeignKey("TypeDeCamionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InterfacePontBascule.Models.TypeDeTransport", "TypeDeTransport")
+                        .WithMany()
+                        .HasForeignKey("TypeDeTransportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Parc");
+
+                    b.Navigation("TypeDeCamion");
+
+                    b.Navigation("TypeDeTransport");
+                });
+
+            modelBuilder.Entity("InterfacePontBascule.Models.SortieRondBeton", b =>
+                {
+                    b.HasOne("InterfacePontBascule.Models.Parc", "Parc")
+                        .WithMany()
+                        .HasForeignKey("ParcId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InterfacePontBascule.Models.TypeDeCamion", "TypeDeCamion")
+                        .WithMany()
+                        .HasForeignKey("TypeDeCamionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InterfacePontBascule.Models.TypeDeTransport", "TypeDeTransport")
+                        .WithMany()
+                        .HasForeignKey("TypeDeTransportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Parc");
+
+                    b.Navigation("TypeDeCamion");
 
                     b.Navigation("TypeDeTransport");
                 });

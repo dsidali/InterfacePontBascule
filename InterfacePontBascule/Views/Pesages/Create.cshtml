@@ -1,0 +1,91 @@
+﻿@model InterfacePontBascule.Models.Pesage
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Pesage</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ParcId" class="control-label"></label>
+                <select asp-for="ParcId" class ="form-control" asp-items="ViewBag.ParcId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumBonA" class="control-label"></label>
+                <input asp-for="NumBonA" class="form-control" />
+                <span asp-validation-for="NumBonA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumTicket" class="control-label"></label>
+                <input asp-for="NumTicket" class="form-control" />
+                <span asp-validation-for="NumTicket" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transporteur" class="control-label"></label>
+                <input asp-for="Transporteur" class="form-control" />
+                <span asp-validation-for="Transporteur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeDeTransportId" class="control-label"></label>
+                <select asp-for="TypeDeTransportId" class ="form-control" asp-items="ViewBag.TypeDeTransportId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeDeCamionId" class="control-label"></label>
+                <select asp-for="TypeDeCamionId" class ="form-control" asp-items="ViewBag.TypeDeCamionId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mat" class="control-label"></label>
+                <input asp-for="Mat" class="form-control" />
+                <span asp-validation-for="Mat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOP" class="control-label"></label>
+                <input asp-for="DateOP" class="form-control" />
+                <span asp-validation-for="DateOP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PCC" class="control-label"></label>
+                <input asp-for="PCC" class="form-control" />
+                <span asp-validation-for="PCC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PCV" class="control-label"></label>
+                <input asp-for="PCV" class="form-control" />
+                <span asp-validation-for="PCV" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QP" class="control-label"></label>
+                <input asp-for="QP" class="form-control" />
+                <span asp-validation-for="QP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observation" class="control-label"></label>
+                <input asp-for="Observation" class="form-control" />
+                <span asp-validation-for="Observation" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Termine" /> @Html.DisplayNameFor(model => model.Termine)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

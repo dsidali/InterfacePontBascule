@@ -20,5 +20,9 @@ namespace InterfacePontBascule.Data
         public DbSet<TypeProduit> TypeProduits { get; set; }
 
         public DbSet<Achat> Achats { get; set; }
+        public DbSet<ReceptionRondBeton> ReceptionRondBetons { get; set; }
+        public DbSet<SortieRondBeton> SortieRondBetons { get; set; }
+        public DbSet<Pesage> Pesages { get; set; }
+
     }
 }

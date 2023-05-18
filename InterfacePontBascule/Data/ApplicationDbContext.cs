@@ -24,5 +24,12 @@ namespace InterfacePontBascule.Data
         public DbSet<SortieRondBeton> SortieRondBetons { get; set; }
         public DbSet<Pesage> Pesages { get; set; }
 
+        public DbSet<SortieTransfertDechet> SortieTransfertDechets { get; set; }
+
+        public DbSet<SortieTransfertRondBeton> SortieTransfertRondBetons { get; set; }
+
+        public DbSet<ReceptionTransfertDechet> ReceptionTransfertDechets { get; set; }
+
+        public DbSet<ReceptionTransfertRondBeton> ReceptionTransfertRondBetons { get; set; }
     }
 }

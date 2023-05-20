@@ -20,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="CustomValidation\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="wwwroot\Reports\" />
   </ItemGroup>
 

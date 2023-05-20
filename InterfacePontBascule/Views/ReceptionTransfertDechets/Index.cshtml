@@ -1,0 +1,114 @@
+﻿@model IEnumerable<InterfacePontBascule.Models.ReceptionTransfertDechet>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Parc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumBL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transporteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Provenance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeDeTransport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeDeCamion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeDeDechet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PCC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PCV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PQS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Termine)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parc.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumBL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transporteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Provenance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeDeTransport.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeDeCamion.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeDeDechet.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PCV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PQS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Termine)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

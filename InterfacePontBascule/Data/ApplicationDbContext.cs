@@ -31,5 +31,7 @@ namespace InterfacePontBascule.Data
         public DbSet<ReceptionTransfertDechet> ReceptionTransfertDechets { get; set; }
 
         public DbSet<ReceptionTransfertRondBeton> ReceptionTransfertRondBetons { get; set; }
+
+        public DbSet<ComPort> ComPorts { get; set; }
     }
 }

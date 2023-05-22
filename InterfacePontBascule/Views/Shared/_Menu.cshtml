@@ -16,7 +16,7 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Achats</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Achats" asp-action="Index">Achats</a>
                     </li>
                  @*   <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Ronds à Beton</a>
@@ -27,8 +27,8 @@
                          Ronds à Beton
                      </a>
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                         <li><a class="dropdown-item" href="#">Sortie</a></li>
-                         <li><a class="dropdown-item" href="#">Reception</a></li>
+                         <li><a class="dropdown-item" asp-area="" asp-controller="SortieRondBetons" asp-action="Index">Sortie</a></li>
+                         <li><a class="dropdown-item" asp-area="" asp-controller="ReceptionRondBetons" asp-action="">Reception</a></li>
            
                      </ul>
                  </li>
@@ -38,10 +38,10 @@
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                          Sortie transferts
-                     </a>
+                     </a>   
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                         <li><a class="dropdown-item" href="#">Dechets ferreux</a></li>
-                         <li><a class="dropdown-item" href="#">Ronds à béton</a></li>
+                         <li><a class="dropdown-item" asp-area="" asp-controller="SortieTransfertDechets" asp-action="Index"   >Dechets ferreux</a></li>
+                         <li><a class="dropdown-item" asp-area="" asp-controller="SortieTransfertRondBetons" asp-action="Index">Ronds à béton</a></li>
            
                      </ul>
                  </li>
@@ -52,8 +52,8 @@
                          Reception transferts
                      </a>
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                         <li><a class="dropdown-item" href="#">Dechets ferreux</a></li>
-                         <li><a class="dropdown-item" href="#">Ronds à béton</a></li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="ReceptionTransfertDechets" asp-action="Index">Dechets ferreux</a></li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="ReceptionTransfertRondBetons" asp-action="Index">Ronds à béton</a></li>
            
                      </ul>
                  </li>
@@ -71,8 +71,8 @@
                          Parametres
                      </a>
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                         <li><a class="dropdown-item" href="#">Dechets ferreux</a></li>
-                         <li><a class="dropdown-item" href="#">Ronds à béton</a></li>
+                         <li><a class="dropdown-item" asp-area="" asp-controller="ComPorts" asp-action="Index">Configuration Ports COM</a></li>
+                         <li><a class="dropdown-item" href="#">Gestion utilisateurs</a></li>
            
                      </ul>
                  </li>

@@ -1,0 +1,56 @@
+﻿@model InterfacePontBascule.Models.ComPort
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>ComPort</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PortName" class="control-label"></label>
+                <input asp-for="PortName" class="form-control" />
+                <span asp-validation-for="PortName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BaudeRate" class="control-label"></label>
+                <input asp-for="BaudeRate" class="form-control" />
+                <span asp-validation-for="BaudeRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataBits" class="control-label"></label>
+                <input asp-for="DataBits" class="form-control" />
+                <span asp-validation-for="DataBits" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReceivedBytesThreshold" class="control-label"></label>
+                <input asp-for="ReceivedBytesThreshold" class="form-control" />
+                <span asp-validation-for="ReceivedBytesThreshold" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DtrEnable" /> @Html.DisplayNameFor(model => model.DtrEnable)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RtsEnable" /> @Html.DisplayNameFor(model => model.RtsEnable)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

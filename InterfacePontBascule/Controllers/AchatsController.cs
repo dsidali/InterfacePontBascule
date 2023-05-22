@@ -182,5 +182,32 @@ namespace InterfacePontBascule.Controllers
         {
           return (_context.Achats?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+
+
+        public async Task<IActionResult> New()
+        {
+            return View();  
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> New(int id)
+        {
+            return View();
+        }
+
+
+        public async Task<IActionResult> Modifier()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Modifier(int id)
+        {
+            return View();
+        }
     }
 }

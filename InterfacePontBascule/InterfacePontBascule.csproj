@@ -26,4 +26,12 @@
     <Folder Include="wwwroot\Reports\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Achats\New.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Achats\New.cshtml" />
+  </ItemGroup>
+
 </Project>

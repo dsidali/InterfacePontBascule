@@ -69,9 +69,11 @@ namespace InterfacePontBascule.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", sortieRondBeton.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", sortieRondBeton.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", sortieRondBeton.TypeDeTransportId);
+            
             return View(sortieRondBeton);
         }
 

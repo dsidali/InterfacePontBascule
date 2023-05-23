@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-InterfacePontBascule-78f8f2d8-9216-4794-8bef-aad5c001e235</UserSecretsId>
   </PropertyGroup>

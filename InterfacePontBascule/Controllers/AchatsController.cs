@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InterfacePontBascule.Data;
 using InterfacePontBascule.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InterfacePontBascule.Controllers
 {
+  //  [Authorize]
     public class AchatsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,7 +24,7 @@ namespace InterfacePontBascule.Controllers
         // GET: Achats
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Achats.Include(a => a.Parc).Include(a => a.TypeDeCamion).Include(a => a.TypeDeDechet).Include(a => a.TypeDeTransport);
+            var applicationDbContext = _context.Achats.Where(a => a.Termine==false).Include(a => a.Parc).Include(a => a.TypeDeCamion).Include(a => a.TypeDeDechet).Include(a => a.TypeDeTransport);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -189,14 +191,30 @@ namespace InterfacePontBascule.Controllers
 
         public async Task<IActionResult> New()
         {
-            return View();  
+            ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id");
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id");
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id");
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport");
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> New(int id)
+        public async Task<IActionResult> New(Achat achat)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _context.Add(achat);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", achat.ParcId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            return View(achat);
         }
 
 

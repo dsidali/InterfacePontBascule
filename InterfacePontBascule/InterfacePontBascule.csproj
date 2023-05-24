@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Folder Include="CustomValidation\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Administration\" />
     <Folder Include="wwwroot\Reports\" />
   </ItemGroup>
 

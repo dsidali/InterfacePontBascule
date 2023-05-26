@@ -183,13 +183,13 @@ namespace InterfacePontBascule.Controllers
             return (_context.Achats?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-
+        /*********************************************************************************************************************************************/
 
         public async Task<IActionResult> New()
         {
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id");
-            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id");
-            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id");
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion");
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "TypeDechet");
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport");
             return View();
         }
@@ -207,9 +207,9 @@ namespace InterfacePontBascule.Controllers
 
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", achat.ParcId);
-            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
-            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
-            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", achat.TypeDeCamionId);
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "TypeDechet", achat.TypeDeDechetId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", achat.TypeDeTransportId);
             return View(achat);
         }
 

@@ -1,8 +1,11 @@
-﻿using InterfacePontBascule.Data;
+﻿using AspNetCore.Reporting;
+using AspNetCore.Reporting.ReportExecutionService;
+using InterfacePontBascule.Data;
 using InterfacePontBascule.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace InterfacePontBascule.Controllers
 {
@@ -10,10 +13,13 @@ namespace InterfacePontBascule.Controllers
     public class AchatsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public AchatsController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public AchatsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
         }
 
         // GET: Achats
@@ -217,12 +223,26 @@ namespace InterfacePontBascule.Controllers
         public async Task<IActionResult> Modifier(int? id)
         {
 
-            return View();
+            if (id == null || _context.Achats == null)
+            {
+                return NotFound();
+            }
+
+            var achat = await _context.Achats.FindAsync(id);
+            if (achat == null)
+            {
+                return NotFound();
+            }
+            ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", achat.ParcId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            return View(achat);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Modifier(int id, [Bind("Id,ParcId,NumBonA,NumTicket,Mat,Transporteur,Source,TypeDeTransportId,TypeDeCamionId,TypeDeDechetId,DateOP,PCC,PCV,PB,PQRa,PQS,Observation,Termine")] Achat achat)
+        public async Task<IActionResult> Modifier(int id,  Achat achat)
         {
             if (id != achat.Id)
             {
@@ -262,12 +282,26 @@ namespace InterfacePontBascule.Controllers
         public async Task<IActionResult> Reprise(int? id)
         {
 
-            return View();
+            if (id == null || _context.Achats == null)
+            {
+                return NotFound();
+            }
+
+            var achat = await _context.Achats.FindAsync(id);
+            if (achat == null)
+            {
+                return NotFound();
+            }
+            ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", achat.ParcId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            return View(achat);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Reprise(int id, [Bind("Id,ParcId,NumBonA,NumTicket,Mat,Transporteur,Source,TypeDeTransportId,TypeDeCamionId,TypeDeDechetId,DateOP,PCC,PCV,PB,PQRa,PQS,Observation,Termine")] Achat achat)
+        public async Task<IActionResult> Reprise(int id,  Achat achat)
         {
             if (id != achat.Id)
             {
@@ -311,7 +345,7 @@ namespace InterfacePontBascule.Controllers
 
 
 
-        public async Task<IActionResult> BonDechargement(int id)
+        public async Task<IActionResult> BonDechargement(int? id)
         {
             if (id == null || _context.Achats == null)
             {
@@ -329,7 +363,38 @@ namespace InterfacePontBascule.Controllers
                 return NotFound();
             }
 
-            return null;
+            string mimtype = "";
+            int extension = 1;
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportReceptionAchat.rdlc";
+
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+          //  parameters.Add("Id", "Welcome");
+
+
+
+            parameters.Add("TypeOp", "Dechargement");
+            parameters.Add("Numero", achat.NumBonA);
+            parameters.Add("Nom", achat.Transporteur);
+            parameters.Add("Date", achat.DateOP.ToShortDateString());
+            parameters.Add("Heure", achat.DateOP.TimeOfDay.ToString());
+            parameters.Add("NumTicket", achat.NumTicket);
+            parameters.Add("Brut", achat.PCC.ToString());
+            parameters.Add("Tar", achat.PCV.ToString());
+            parameters.Add("Net", achat.PB.ToString());
+            parameters.Add("Rabais", achat.PQRa.ToString());
+            parameters.Add("Netrecu", achat.PQS.ToString());
+            parameters.Add("Categorie", "Dechets ferreux");
+            parameters.Add("Observation", achat.Observation);
+            parameters.Add("ParcId", achat.Parc.Id.ToString());
+            parameters.Add("TypeTransport", achat.TypeDeTransport.TypeTransport);
+            parameters.Add("User", User.Identity.Name);
+            parameters.Add("Matricule", achat.Mat);
+            parameters.Add("TypeDechets",achat.TypeDeDechet.TypeDechet);
+
+            LocalReport localReport = new LocalReport(path);
+            var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimtype);
+
+            return File(result.MainStream, "application/pdf");
         }
 
 
@@ -351,7 +416,38 @@ namespace InterfacePontBascule.Controllers
                 return NotFound();
             }
 
-            return null;
+            string mimtype = "";
+            int extension = 1;
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportReceptionAchat.rdlc";
+
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            //  parameters.Add("Id", "Welcome");
+
+
+
+            parameters.Add("TypeOp", "Reception");
+            parameters.Add("Numero", achat.NumBonA);
+            parameters.Add("Nom", achat.Transporteur);
+            parameters.Add("Date", achat.DateOP.ToShortDateString());
+            parameters.Add("Heure", achat.DateOP.TimeOfDay.ToString());
+            parameters.Add("NumTicket", achat.NumTicket);
+            parameters.Add("Brut", achat.PCC.ToString());
+            parameters.Add("Tar", achat.PCV.ToString());
+            parameters.Add("Net", achat.PB.ToString());
+            parameters.Add("Rabais", achat.PQRa.ToString());
+            parameters.Add("Netrecu", achat.PQS.ToString());
+            parameters.Add("Categorie", "Dechets ferreux");
+            parameters.Add("Observation", achat.Observation);
+            parameters.Add("ParcId", achat.Parc.Id.ToString());
+            parameters.Add("TypeTransport", achat.TypeDeTransport.TypeTransport);
+            parameters.Add("User", User.Identity.Name);
+            parameters.Add("Matricule", achat.Mat);
+            parameters.Add("TypeDechets", achat.TypeDeDechet.TypeDechet);
+
+            LocalReport localReport = new LocalReport(path);
+            var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimtype);
+
+            return File(result.MainStream, "application/pdf");
         }
     }
 }

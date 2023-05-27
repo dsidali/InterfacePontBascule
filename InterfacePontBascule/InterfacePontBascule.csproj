@@ -8,6 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Reports\ReportPesageLibre.rdlc" />
+    <Content Remove="wwwroot\Reports\ReportReceptionAchat.rdlc" />
+    <Content Remove="wwwroot\Reports\ReportReceptionRondBeton.rdlc" />
+    <Content Remove="wwwroot\Reports\ReportSortieRondBeton.rdlc" />
+    <Content Remove="wwwroot\Reports\ReportTransfert.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
@@ -17,13 +26,14 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.6" />
+    <PackageReference Include="System.CodeDom" Version="7.0.0" />
     <PackageReference Include="System.IO.Ports" Version="7.0.0" />
+    <PackageReference Include="System.Security.Permissions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="CustomValidation\" />
     <Folder Include="Views\Administration\" />
-    <Folder Include="wwwroot\Reports\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +42,14 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Achats\New.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\Reports\ReportPesageLibre.rdlc" />
+    <EmbeddedResource Include="wwwroot\Reports\ReportReceptionAchat.rdlc" />
+    <EmbeddedResource Include="wwwroot\Reports\ReportReceptionRondBeton.rdlc" />
+    <EmbeddedResource Include="wwwroot\Reports\ReportSortieRondBeton.rdlc" />
+    <EmbeddedResource Include="wwwroot\Reports\ReportTransfert.rdlc" />
   </ItemGroup>
 
 </Project>

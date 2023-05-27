@@ -66,6 +66,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\ReportPesageLibre.rdlc" />
+    <EmbeddedResource Include="Reports\ReportReceptionAchat.rdlc" />
+    <EmbeddedResource Include="Reports\ReportReceptionRondBeton.rdlc" />
+    <EmbeddedResource Include="Reports\ReportSortieRondBeton.rdlc" />
+    <EmbeddedResource Include="Reports\ReportTransfert.rdlc" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -79,8 +84,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

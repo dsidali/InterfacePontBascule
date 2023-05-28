@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
+using InterfacePontBascule.Business;
 
 namespace InterfacePontBascule.Controllers
 {
@@ -14,12 +15,15 @@ namespace InterfacePontBascule.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public AchatsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
+       // private readonly ILogger _logger;
+        private  IComPortUsage _comPortUsage;
+        public AchatsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment, IComPortUsage comPortUsage)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-
+          //  _logger = logger;
+            _comPortUsage = comPortUsage;
         }
 
         // GET: Achats
@@ -448,6 +452,13 @@ namespace InterfacePontBascule.Controllers
             var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimtype);
 
             return File(result.MainStream, "application/pdf");
+        }
+
+
+
+        public ActionResult Peser()
+        {
+            return Content(_comPortUsage.ReadData());
         }
     }
 }

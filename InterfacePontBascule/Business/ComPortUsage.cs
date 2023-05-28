@@ -1,30 +1,46 @@
 ﻿using System.IO.Ports;
+using InterfacePontBascule.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace InterfacePontBascule.Business
 {
-    public class ComPortUsage
+    public class ComPortUsage : IComPortUsage
     {
-        public static string ReadData(SerialPort serialPort1)
+        private readonly ApplicationDbContext _context;
+        public ComPortUsage(ApplicationDbContext context)
         {
+            _context = context;
+        }
+
+
+        public  string ReadData()
+        {
+            SerialPort serialPort1 = new SerialPort();
+            var comPort = _context.ComPorts.FirstOrDefault();
+            if (comPort == null)
+            {
+                return null;
+            }
+
             string poidsValueLabel = "0";
             try
             {
 
 
                 serialPort1.Close();
-              //  serialPort1.PortName = ConfigurationManager.AppSettings["comport"];
-              //  serialPort1.BaudRate = int.Parse(ConfigurationManager.AppSettings["BaudRate"]);
+                serialPort1.PortName = comPort.PortName;
+                serialPort1.BaudRate = comPort.BaudeRate;
                 serialPort1.Parity = Parity.None;
-              //  serialPort1.DataBits = int.Parse(ConfigurationManager.AppSettings["DataBits"]); ;
+                serialPort1.DataBits = comPort.DataBits;
                 serialPort1.StopBits = StopBits.One;
-                serialPort1.ReceivedBytesThreshold = 1;
-                serialPort1.DtrEnable = true;
-                serialPort1.RtsEnable = true;
+                serialPort1.ReceivedBytesThreshold = comPort.ReceivedBytesThreshold;
+                serialPort1.DtrEnable = comPort.DtrEnable;
+                serialPort1.RtsEnable = comPort.RtsEnable;
                 serialPort1.Open();
 
      
           
-
+                Thread.Sleep(3000);
                 int reading = serialPort1.ReadByte();
                 poidsValueLabel = serialPort1.ReadExisting();
                 serialPort1.Close();
@@ -36,11 +52,11 @@ namespace InterfacePontBascule.Business
             catch (Exception e)
             {
                 //    Console.WriteLine(e);
-                //throw;
+                throw;
               //  MessageBox.Show(e.Message);
-                poidsValueLabel = "0";
+               // poidsValueLabel = "0";
 
-                return poidsValueLabel;
+            //    return poidsValueLabel;
             }
 
         }

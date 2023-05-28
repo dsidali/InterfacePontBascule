@@ -1,3 +1,4 @@
+using InterfacePontBascule.Business;
 using InterfacePontBascule.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 builder.Services.AddControllersWithViews();
 
-
+builder.Services.AddTransient<IComPortUsage, ComPortUsage>();
 
 
 //builder.Services.AddMvc(config =>

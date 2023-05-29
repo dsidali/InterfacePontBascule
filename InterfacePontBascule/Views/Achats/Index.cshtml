@@ -5,16 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>List des achats en attente de reprise</h1>
 
 <p>
-    <a asp-action="New">Nouvelle operation</a> | <a asp-action="ListFinished">Lister terminés</a>
+    <a asp-action="New" class="btn btn-primary">Nouvelle operation</a> | <a asp-action="ListFinished" class="btn btn-primary">Lister terminés</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Parc)
+                @Html.DisplayNameFor(model => model.ParcId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NumBonA)

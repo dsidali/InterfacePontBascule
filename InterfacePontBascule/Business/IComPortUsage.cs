@@ -1,8 +1,9 @@
-﻿using System.IO.Ports;
-
-namespace InterfacePontBascule.Business;
+﻿namespace InterfacePontBascule.Business;
 
 public interface IComPortUsage
 {
-   public  string ReadData();
+    public string ReadData();
+
+
+
 }

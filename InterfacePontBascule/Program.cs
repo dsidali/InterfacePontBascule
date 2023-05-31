@@ -18,6 +18,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IComPortUsage, ComPortUsage>();
+builder.Services.AddTransient<INumTicketBonManagement, NumTicketBonManagement>();
 
 
 //builder.Services.AddMvc(config =>

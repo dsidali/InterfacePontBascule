@@ -1,6 +1,5 @@
-﻿using System.IO.Ports;
-using InterfacePontBascule.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using InterfacePontBascule.Data;
+using System.IO.Ports;
 
 namespace InterfacePontBascule.Business
 {
@@ -13,7 +12,7 @@ namespace InterfacePontBascule.Business
         }
 
 
-        public  string ReadData()
+        public string ReadData()
         {
             SerialPort serialPort1 = new SerialPort();
             var comPort = _context.ComPorts.FirstOrDefault();
@@ -38,8 +37,8 @@ namespace InterfacePontBascule.Business
                 serialPort1.RtsEnable = comPort.RtsEnable;
                 serialPort1.Open();
 
-     
-          
+
+
                 Thread.Sleep(3000);
                 int reading = serialPort1.ReadByte();
                 poidsValueLabel = serialPort1.ReadExisting();
@@ -53,13 +52,16 @@ namespace InterfacePontBascule.Business
             {
                 //    Console.WriteLine(e);
                 throw;
-              //  MessageBox.Show(e.Message);
-               // poidsValueLabel = "0";
+                //  MessageBox.Show(e.Message);
+                // poidsValueLabel = "0";
 
-            //    return poidsValueLabel;
+                //    return poidsValueLabel;
             }
 
         }
+
+
+
 
     }
 }

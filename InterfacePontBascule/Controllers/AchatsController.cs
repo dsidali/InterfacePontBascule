@@ -92,6 +92,11 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            var maxNumBon = _context.Achats.Max(x => x.NumBonA);
+            var maxNumTicket = _context.Achats.Max(x => x.NumTicket);
+            ViewBag.NumBon = _numTicketBonManagement.GenerateNextNum(maxNumBon);
+            ViewBag.NumTicket = _numTicketBonManagement.GenerateNextNum(maxNumTicket);
+
             return View(achat);
         }
 
@@ -237,6 +242,11 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", achat.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "TypeDechet", achat.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", achat.TypeDeTransportId);
+
+            var maxNumBon = _context.Achats.Max(x => x.NumBonA);
+            var maxNumTicket = _context.Achats.Max(x => x.NumTicket);
+            ViewBag.NumBon = _numTicketBonManagement.GenerateNextNum(maxNumBon);
+            ViewBag.NumTicket = _numTicketBonManagement.GenerateNextNum(maxNumTicket);
             return View(achat);
         }
 

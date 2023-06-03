@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InterfacePontBascule.CustomValidation;
 
 namespace InterfacePontBascule.Models
 {
@@ -10,7 +12,9 @@ namespace InterfacePontBascule.Models
     {
         public int Id { get; set; }
 
-        public int Qte { get; set; }
+
+        [Display(Name = "Charge")]
+        [PoidsPositif] public int Qte { get; set; } = 0;
 
     }
 }

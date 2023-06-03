@@ -13,18 +13,18 @@
     <div class="col-md-4">
         <form asp-action="New">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="ParcId" class="control-label"></label>
                 <select asp-for="ParcId" class="form-control" asp-items="ViewBag.ParcId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="NumBonA" class="control-label"></label>
-                <input asp-for="NumBonA" class="form-control" readonly="readonly"/>
+                <input asp-for="NumBonA" class="form-control" readonly="readonly" value="@ViewBag.NumBon"/>
                 <span asp-validation-for="NumBonA" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NumTicket" class="control-label"></label>
-                <input asp-for="NumTicket" class="form-control" disabled />
+                <input asp-for="NumTicket" class="form-control" readonly="readonly" value="@ViewBag.NumTicket" />
                 <span asp-validation-for="NumTicket" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -56,7 +56,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="DateOP" class="control-label"></label>
-                <input asp-for="DateOP" class="form-control" />
+                <input asp-for="DateOP" class="form-control" type="datetime-local" readonly="readonly" value="@(DateTime.Now.ToString("yyyy-MM-dd HH:mm"))" />
+             
+                
+             @*   <input type="datetime-local" asp-for="DateOP" value="@(DateTime.Now.ToString("yyyy-MM-dd HH:mm"))" />*@
                 <span asp-validation-for="DateOP" class="text-danger"></span>
             </div>
 

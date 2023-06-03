@@ -17,15 +17,17 @@ namespace InterfacePontBascule.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
        // private readonly ILogger _logger;
         private  IComPortUsage _comPortUsage;
-        public AchatsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment, IComPortUsage comPortUsage)
+        private INumTicketBonManagement _numTicketBonManagement;
+        public AchatsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment, IComPortUsage comPortUsage, INumTicketBonManagement numTicketBonManagement)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
           //  _logger = logger;
             _comPortUsage = comPortUsage;
+            _numTicketBonManagement = numTicketBonManagement;
         }
-
+            
         // GET: Achats
         public async Task<IActionResult> Index()
         {
@@ -63,6 +65,11 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "TypeDechet");
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport");
             ViewBag.e = User.Identity.Name;
+
+            var maxNumBon = _context.Achats.Max(x => x.NumBonA);
+            var maxNumTicket = _context.Achats.Max(x => x.NumTicket);
+            ViewBag.NumBon = _numTicketBonManagement.GenerateNextNum(maxNumBon);
+            ViewBag.NumTicket = _numTicketBonManagement.GenerateNextNum(maxNumTicket);
             return View();
         }
 
@@ -201,6 +208,16 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion");
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "TypeDechet");
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport");
+
+
+            ViewBag.e = User.Identity.Name;
+
+            var maxNumBon = _context.Achats.Max(x => x.NumBonA);
+            var maxNumTicket = _context.Achats.Max(x => x.NumTicket);
+            ViewBag.NumBon = _numTicketBonManagement.GenerateNextNum(maxNumBon);
+            ViewBag.NumTicket = _numTicketBonManagement.GenerateNextNum(maxNumTicket);
+
+
             return View();
         }
 

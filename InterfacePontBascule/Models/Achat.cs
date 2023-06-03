@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using InterfacePontBascule.CustomValidation;
+
 
 namespace InterfacePontBascule.Models
 {
@@ -12,17 +14,22 @@ namespace InterfacePontBascule.Models
         public Parc Parc { get; set; }
 
         [Display(Name = "Bon")]
+        [Required]
         public string NumBonA { get; set; } //numero bon d'access, genere automatiquement par cette application
+       
         [Display(Name = "Ticket")]
+        [Required]
         public string NumTicket { get; set; }
 
 
 
         [Display(Name = "Matricule")]
+        [Required]
         public string Mat { get; set; } //Matricule Camion
 
+        [Required]
         public string Transporteur { get; set; }
-
+        [Required]
         public string Source { get; set; }
 
         [Display(Name = "Transport")]
@@ -48,6 +55,7 @@ namespace InterfacePontBascule.Models
         // public TimeSpan HeureOP { get; set; }
 
         [Display(Name = "Charge")]
+        [PoidsPositif]
         public int PCC { get; set; } = 0;//pesage a charge
 
         [Display(Name = "Tare")]
@@ -59,7 +67,6 @@ namespace InterfacePontBascule.Models
         public int PQRa { get; set; } = 0;
         [Display(Name = "Net")]
         public int PQS { get; set; } = 0;
-
 
 
 

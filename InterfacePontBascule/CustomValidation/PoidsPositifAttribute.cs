@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using InterfacePontBascule.Models;
 
 namespace InterfacePontBascule.CustomValidation
 {
@@ -6,8 +7,14 @@ namespace InterfacePontBascule.CustomValidation
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            int number = (int)value;
-            if (number == 0)
+            //var parc = (Achat)validationContext.ObjectInstance;
+            //int number = parc.PCC;
+
+           // string number = value.ToString();
+           // if (number.Contains("aa"))
+
+           int number = Convert.ToInt32(value);
+            if (number == 0 )
             {
                 return new ValidationResult("Le poids ne doit pas être inférieur ou égal à 0");
             }

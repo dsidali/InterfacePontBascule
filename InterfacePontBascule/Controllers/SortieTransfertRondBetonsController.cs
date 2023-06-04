@@ -23,6 +23,11 @@ namespace InterfacePontBascule.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.SortieTransfertRondBetons.Include(s => s.Parc).Include(s => s.TypeDeCamion).Include(s => s.TypeDeTransport);
+
+            ViewBag.trsfopen = "menu-open";
+            ViewBag.trsf = "active";
+            ViewBag.trsfrb = "active";
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -43,7 +48,9 @@ namespace InterfacePontBascule.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.trsfopen = "menu-open";
+            ViewBag.trsf = "active";
+            ViewBag.trsfrb = "active";
             return View(sortieTransfertRondBeton);
         }
 
@@ -53,6 +60,10 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id");
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id");
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id");
+
+            ViewBag.trsfopen = "menu-open";
+            ViewBag.trsf = "active";
+            ViewBag.trsfrb = "active";
             return View();
         }
 
@@ -72,6 +83,10 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", sortieTransfertRondBeton.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", sortieTransfertRondBeton.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", sortieTransfertRondBeton.TypeDeTransportId);
+
+            ViewBag.trsfopen = "menu-open";
+            ViewBag.trsf = "active";
+            ViewBag.trsfrb = "active";
             return View(sortieTransfertRondBeton);
         }
 
@@ -91,6 +106,11 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", sortieTransfertRondBeton.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", sortieTransfertRondBeton.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", sortieTransfertRondBeton.TypeDeTransportId);
+
+            ViewBag.trsfopen = "menu-open";
+            ViewBag.trsf = "active";
+            ViewBag.trsfrb = "active";
+
             return View(sortieTransfertRondBeton);
         }
 
@@ -129,6 +149,11 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", sortieTransfertRondBeton.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", sortieTransfertRondBeton.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", sortieTransfertRondBeton.TypeDeTransportId);
+
+            ViewBag.trsfopen = "menu-open";
+            ViewBag.trsf = "active";
+            ViewBag.trsfrb = "active";
+
             return View(sortieTransfertRondBeton);
         }
 

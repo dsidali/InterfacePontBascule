@@ -23,6 +23,8 @@ namespace InterfacePontBascule.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Pesages.Include(p => p.Parc).Include(p => p.TypeDeCamion).Include(p => p.TypeDeTransport);
+
+            ViewBag.pesage = "active";
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -43,7 +45,7 @@ namespace InterfacePontBascule.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.pesage = "active";
             return View(pesage);
         }
 
@@ -53,6 +55,7 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id");
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id");
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id");
+            ViewBag.pesage = "active";
             return View();
         }
 
@@ -72,6 +75,7 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", pesage.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", pesage.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", pesage.TypeDeTransportId);
+            ViewBag.pesage = "active";
             return View(pesage);
         }
 
@@ -91,6 +95,7 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", pesage.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", pesage.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", pesage.TypeDeTransportId);
+            ViewBag.pesage = "active";
             return View(pesage);
         }
 
@@ -129,6 +134,7 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", pesage.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", pesage.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", pesage.TypeDeTransportId);
+            ViewBag.pesage = "active";
             return View(pesage);
         }
 
@@ -149,7 +155,7 @@ namespace InterfacePontBascule.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.pesage = "active";
             return View(pesage);
         }
 

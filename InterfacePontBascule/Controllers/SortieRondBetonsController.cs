@@ -23,6 +23,11 @@ namespace InterfacePontBascule.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.SortieRondBetons.Include(s => s.Parc).Include(s => s.TypeDeCamion).Include(s => s.TypeDeTransport);
+
+            ViewBag.rbopen = "menu-open";
+            ViewBag.rb = "active";
+            ViewBag.rbsrt = "active";
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -43,6 +48,9 @@ namespace InterfacePontBascule.Controllers
             {
                 return NotFound();
             }
+            ViewBag.rbopen = "menu-open";
+            ViewBag.rb = "active";
+            ViewBag.rbsrt = "active";
 
             return View(sortieRondBeton);
         }
@@ -53,6 +61,10 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id");
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id");
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id");
+
+            ViewBag.rbopen = "menu-open";
+            ViewBag.rb = "active";
+            ViewBag.rbsrt = "active";
             return View();
         }
 
@@ -73,7 +85,11 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", sortieRondBeton.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", sortieRondBeton.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", sortieRondBeton.TypeDeTransportId);
-            
+
+
+            ViewBag.rbopen = "menu-open";
+            ViewBag.rb = "active";
+            ViewBag.rbsrt = "active";
             return View(sortieRondBeton);
         }
 
@@ -93,6 +109,12 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", sortieRondBeton.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", sortieRondBeton.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", sortieRondBeton.TypeDeTransportId);
+
+
+            ViewBag.rbopen = "menu-open";
+            ViewBag.rb = "active";
+            ViewBag.rbsrt = "active";
+
             return View(sortieRondBeton);
         }
 
@@ -131,6 +153,11 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", sortieRondBeton.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", sortieRondBeton.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", sortieRondBeton.TypeDeTransportId);
+
+
+            ViewBag.rbopen = "menu-open";
+            ViewBag.rb = "active";
+            ViewBag.rbsrt = "active";
             return View(sortieRondBeton);
         }
 
@@ -152,6 +179,10 @@ namespace InterfacePontBascule.Controllers
                 return NotFound();
             }
 
+
+            ViewBag.rbopen = "menu-open";
+            ViewBag.rb = "active";
+            ViewBag.rbsrt = "active";
             return View(sortieRondBeton);
         }
 

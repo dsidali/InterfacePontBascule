@@ -32,6 +32,7 @@ namespace InterfacePontBascule.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Achats.Where(a => a.Termine == false).Include(a => a.Parc).Include(a => a.TypeDeCamion).Include(a => a.TypeDeDechet).Include(a => a.TypeDeTransport);
+            ViewBag.achats = "active";
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -53,7 +54,7 @@ namespace InterfacePontBascule.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.achats = "active";
             return View(achat);
         }
 
@@ -70,6 +71,7 @@ namespace InterfacePontBascule.Controllers
             var maxNumTicket = _context.Achats.Max(x => x.NumTicket);
             ViewBag.NumBon = _numTicketBonManagement.GenerateNextNum(maxNumBon);
             ViewBag.NumTicket = _numTicketBonManagement.GenerateNextNum(maxNumTicket);
+            ViewBag.achats = "active";
             return View();
         }
 
@@ -96,7 +98,7 @@ namespace InterfacePontBascule.Controllers
             var maxNumTicket = _context.Achats.Max(x => x.NumTicket);
             ViewBag.NumBon = _numTicketBonManagement.GenerateNextNum(maxNumBon);
             ViewBag.NumTicket = _numTicketBonManagement.GenerateNextNum(maxNumTicket);
-
+            ViewBag.achats = "active";
             return View(achat);
         }
 
@@ -117,6 +119,7 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            ViewBag.achats = "active";
             return View(achat);
         }
 
@@ -156,6 +159,7 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            ViewBag.achats = "active";
             return View(achat);
         }
 
@@ -222,7 +226,7 @@ namespace InterfacePontBascule.Controllers
             ViewBag.NumBon = _numTicketBonManagement.GenerateNextNum(maxNumBon);
             ViewBag.NumTicket = _numTicketBonManagement.GenerateNextNum(maxNumTicket);
 
-
+            ViewBag.achats = "active";
             return View();
         }
 
@@ -247,6 +251,7 @@ namespace InterfacePontBascule.Controllers
             var maxNumTicket = _context.Achats.Max(x => x.NumTicket);
             ViewBag.NumBon = _numTicketBonManagement.GenerateNextNum(maxNumBon);
             ViewBag.NumTicket = _numTicketBonManagement.GenerateNextNum(maxNumTicket);
+            ViewBag.achats = "active";
             return View(achat);
         }
 
@@ -268,6 +273,7 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            ViewBag.achats = "active";
             return View(achat);
         }
 
@@ -304,6 +310,8 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+
+            ViewBag.achats = "active"; 
             return View(achat);
         }
 
@@ -327,6 +335,7 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            ViewBag.achats = "active";
             return View(achat);
         }
 
@@ -363,6 +372,7 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            ViewBag.achats = "active";
             return View(achat);
         }
 

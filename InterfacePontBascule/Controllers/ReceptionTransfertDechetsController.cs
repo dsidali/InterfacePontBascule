@@ -23,6 +23,11 @@ namespace InterfacePontBascule.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.ReceptionTransfertDechets.Include(r => r.Parc).Include(r => r.TypeDeCamion).Include(r => r.TypeDeDechet).Include(r => r.TypeDeTransport);
+
+            ViewBag.rectrsfopen = "menu-open";
+            ViewBag.rectrsf = "active";
+            ViewBag.rectrsfdech = "active";
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -44,7 +49,9 @@ namespace InterfacePontBascule.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.rectrsfopen = "menu-open";
+            ViewBag.rectrsf = "active";
+            ViewBag.rectrsfdech = "active";
             return View(receptionTransfertDechet);
         }
 
@@ -75,6 +82,12 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", receptionTransfertDechet.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", receptionTransfertDechet.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", receptionTransfertDechet.TypeDeTransportId);
+
+            ViewBag.rectrsfopen = "menu-open";
+            ViewBag.rectrsf = "active";
+            ViewBag.rectrsfdech = "active";
+
+
             return View(receptionTransfertDechet);
         }
 
@@ -95,6 +108,11 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", receptionTransfertDechet.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", receptionTransfertDechet.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", receptionTransfertDechet.TypeDeTransportId);
+
+            ViewBag.rectrsfopen = "menu-open";
+            ViewBag.rectrsf = "active";
+            ViewBag.rectrsfdech = "active";
+
             return View(receptionTransfertDechet);
         }
 
@@ -134,6 +152,11 @@ namespace InterfacePontBascule.Controllers
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", receptionTransfertDechet.TypeDeCamionId);
             ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", receptionTransfertDechet.TypeDeDechetId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", receptionTransfertDechet.TypeDeTransportId);
+
+            ViewBag.rectrsfopen = "menu-open";
+            ViewBag.rectrsf = "active";
+            ViewBag.rectrsfdech = "active";
+
             return View(receptionTransfertDechet);
         }
 

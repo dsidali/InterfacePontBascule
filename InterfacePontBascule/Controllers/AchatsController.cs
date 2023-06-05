@@ -332,9 +332,9 @@ namespace InterfacePontBascule.Controllers
                 return NotFound();
             }
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", achat.ParcId);
-            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
-            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
-            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", achat.TypeDeCamionId);
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "TypeDechet", achat.TypeDeDechetId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", achat.TypeDeTransportId);
             ViewBag.achats = "active";
             return View(achat);
         }
@@ -354,6 +354,9 @@ namespace InterfacePontBascule.Controllers
                 {
                     _context.Update(achat);
                     await _context.SaveChangesAsync();
+                    
+
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -366,12 +369,12 @@ namespace InterfacePontBascule.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), new { id = achat.Id });
             }
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", achat.ParcId);
-            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
-            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
-            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", achat.TypeDeCamionId);
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "TypeDechet", achat.TypeDeDechetId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", achat.TypeDeTransportId);
             ViewBag.achats = "active";
             return View(achat);
         }
@@ -384,6 +387,30 @@ namespace InterfacePontBascule.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        public async Task<IActionResult> GetBon(int? id)
+        {
+            if (id == null || _context.Achats == null)
+            {
+                return NotFound();
+            }
+            var achat = await _context.Achats.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (achat == null)
+            {
+                return NotFound();
+            }
+
+            if (achat.Termine)
+            {
+                return RedirectToAction(nameof(BonReceptionAchat), new { id = achat.Id });
+
+            }
+            else
+            {
+                return RedirectToAction(nameof(BonDechargement), new { id = achat.Id });
+
+            }
+        }
 
 
         public async Task<IActionResult> BonDechargement(int? id)

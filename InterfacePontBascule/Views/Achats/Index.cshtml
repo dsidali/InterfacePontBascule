@@ -13,9 +13,9 @@
 <table  id="listachats" class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.ParcId)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.NumBonA)
             </th>
@@ -46,7 +46,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.PCC)
             </th>
-            <th>
+ @*           <th>
                 @Html.DisplayNameFor(model => model.PCV)
             </th>
             <th>
@@ -57,22 +57,22 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PQS)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Observation)
             </th>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.Termine)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+           @* <td>
                 @Html.DisplayFor(modelItem => item.Parc.Id)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.NumBonA)
             </td>
@@ -103,7 +103,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PCC)
             </td>
-            <td>
+           @* <td>
                 @Html.DisplayFor(modelItem => item.PCV)
             </td>
             <td>
@@ -114,13 +114,13 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PQS)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Observation)
             </td>
-            <td>
+           @* <td>
                 @Html.DisplayFor(modelItem => item.Termine)
-            </td>
+            </td>*@
             <td>
                 <a asp-action="Reprise" asp-route-id="@item.Id">Reprise</a>|
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a>

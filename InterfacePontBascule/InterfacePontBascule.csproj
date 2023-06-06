@@ -41,6 +41,8 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Achats\New.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Pesages\ListFinished.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Pesages\New.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1650,6 +1652,14 @@
     <None Include="wwwroot\plugins\uplot\uPlot.esm.js" />
     <None Include="wwwroot\plugins\uplot\uPlot.iife.js" />
     <None Include="wwwroot\plugins\uplot\uPlot.iife.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Pesages\New.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Pesages\ListFinished.cshtml" />
   </ItemGroup>
 
 </Project>

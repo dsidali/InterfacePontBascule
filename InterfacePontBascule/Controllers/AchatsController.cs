@@ -307,9 +307,9 @@ namespace InterfacePontBascule.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", achat.ParcId);
-            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", achat.TypeDeCamionId);
-            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "Id", achat.TypeDeDechetId);
-            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", achat.TypeDeTransportId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", achat.TypeDeCamionId);
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "TypeDechet", achat.TypeDeDechetId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", achat.TypeDeTransportId);
 
             ViewBag.achats = "active"; 
             return View(achat);

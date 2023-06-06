@@ -73,7 +73,7 @@ namespace InterfacePontBascule.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ParcId,NumBonA,NumTicket,Transporteur,TypeDeTransportId,TypeDeCamionId,Mat,DateOP,PCC,PCV,QP,Observation,Termine")] Pesage pesage)
+        public async Task<IActionResult> Create(Pesage pesage)
         {
             if (ModelState.IsValid)
             {
@@ -289,8 +289,8 @@ namespace InterfacePontBascule.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", pesage.ParcId);
-            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", pesage.TypeDeCamionId);
-            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", pesage.TypeDeTransportId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", pesage.TypeDeCamionId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", pesage.TypeDeTransportId);
 
             ViewBag.pesages = "active";
             return View(pesage);

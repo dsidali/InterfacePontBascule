@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>List des achats en attente de reprise</h1>
+<h1>Achats en attente de reprise</h1>
 
 <p>
     <a asp-action="New" class="btn btn-primary">Nouvelle operation</a> | <a asp-action="ListFinished" class="btn btn-primary">Lister terminés</a>
@@ -64,7 +64,7 @@
            @* <th>
                 @Html.DisplayNameFor(model => model.Termine)
             </th>*@
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>

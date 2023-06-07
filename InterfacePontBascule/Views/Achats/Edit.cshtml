@@ -66,27 +66,27 @@
             </div>
             <div class="form-group">
                 <label asp-for="PCC" class="control-label"></label>
-                <input asp-for="PCC" class="form-control" readonly="readonly"/>
+                <input asp-for="PCC" class="form-control" readonly="readonly" id="pcharge"/>
                 <span asp-validation-for="PCC" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PCV" class="control-label"></label>
-                <input asp-for="PCV" class="form-control" readonly="readonly"/>
+                <input asp-for="PCV" class="form-control" readonly="readonly" id="tare"/>
                 <span asp-validation-for="PCV" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PB" class="control-label"></label>
-                <input asp-for="PB" class="form-control" readonly="readonly"/>
+                <input asp-for="PB" class="form-control" readonly="readonly" id="pbrut" />
                 <span asp-validation-for="PB" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PQRa" class="control-label"></label>
-                <input asp-for="PQRa" class="form-control" />
+                <input asp-for="PQRa" class="form-control" id="rabais" />
                 <span asp-validation-for="PQRa" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PQS" class="control-label"></label>
-                <input asp-for="PQS" class="form-control" readonly="readonly"/>
+                <input asp-for="PQS" class="form-control" readonly="readonly" id="pnet" />
                 <span asp-validation-for="PQS" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -124,21 +124,41 @@
 
     <script>
         $(document).ready(function () {
-            $("#pesertare").click(function () {
+            $("#pesercharge").click(function () {
                 $.ajax({
-                    url: "@Url.Action("Peser", "Achats")", // Replace "ControllerName" with your actual controller name
+                    url: "@Url.Action("Peser", "Pesages")", // Replace "ControllerName" with your actual controller name
                     type: "GET",
                     success: function (result) {
                         // $("#result").text(result);
-                        $('#tare').val(result);
-                        $('#calculer').removeAttr('disabled');
+                        $('#pcharge').val(result);
+                        $('#tare').removeAttr('disabled');
 
                     },
                     error: function (xhr, status, error) {
                         console.log("An error occurred: " + error);
                     }
                 });
-            });
+
+
+
+
+
+
+                $("#pesertare").click(function () {
+                    $.ajax({
+                        url: "@Url.Action("Peser", "Pesages")", // Replace "ControllerName" with your actual controller name
+                        type: "GET",
+                        success: function (result) {
+                            // $("#result").text(result);
+                            $('#tare').val(result);
+                            $('#calculer').removeAttr('disabled');
+
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("An error occurred: " + error);
+                        }
+                    });
+                });
 
 
             $("#calculer").click(function () {

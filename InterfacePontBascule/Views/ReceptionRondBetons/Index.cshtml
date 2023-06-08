@@ -5,17 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Reception Ronds à béton en attente</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="New" class="btn btn-primary">Nouvelle operation</a> | <a asp-action="ListFinished" class="btn btn-primary">Lister terminés</a>
 </p>
-<table class="table">
+<table  id="listachats" class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Parc)
-            </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.NumBonA)
             </th>
@@ -46,33 +44,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.PCC)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PCV)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PB)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PQRa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PQS)
-            </th>
+       
             <th>
                 @Html.DisplayNameFor(model => model.Observation)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Termine)
-            </th>
-            <th></th>
+           
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Parc.Id)
-            </td>
+          
             <td>
                 @Html.DisplayFor(modelItem => item.NumBonA)
             </td>
@@ -92,10 +75,10 @@
                 @Html.DisplayFor(modelItem => item.Mat)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TypeDeTransport.Id)
+                @Html.DisplayFor(modelItem => item.TypeDeTransport.TypeTransport)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TypeDeCamion.Id)
+                @Html.DisplayFor(modelItem => item.TypeDeCamion.TypeCamion)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Diametre)
@@ -103,24 +86,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PCC)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PCV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PB)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PQRa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PQS)
-            </td>
+          
             <td>
                 @Html.DisplayFor(modelItem => item.Observation)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Termine)
-            </td>
+        
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
@@ -130,3 +100,18 @@
 }
     </tbody>
 </table>
+@section Scripts {
+    @*   @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }*@
+
+    <script>
+        $(document).ready(function () {
+            $("#listachats").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#listachats_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+}

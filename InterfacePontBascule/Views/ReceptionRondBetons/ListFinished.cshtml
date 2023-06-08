@@ -1,17 +1,16 @@
-﻿@model IEnumerable<InterfacePontBascule.Models.Pesage>
+﻿@model IEnumerable<InterfacePontBascule.Models.ReceptionRondBeton>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Pesages libres traités</h1>
+<h1>Reception Ronds à béton traités</h1>
 
 <p>
     <a asp-action="New" class="btn btn-primary">Nouvelle operation</a> 
 </p>
-
-<table class="table table-bordered table-striped" id="listachats">
+<table id="listachats" class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
@@ -24,21 +23,25 @@
                 @Html.DisplayNameFor(model => model.NumTicket)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Mat)
+                @Html.DisplayNameFor(model => model.DateOp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Source)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Transporteur)
             </th>
-    
+            <th>
+                @Html.DisplayNameFor(model => model.Mat)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.TypeDeTransport)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TypeDeCamion)
             </th>
-         
             <th>
-                @Html.DisplayNameFor(model => model.DateOP)
+                @Html.DisplayNameFor(model => model.Diametre)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PCC)
@@ -47,7 +50,13 @@
                 @Html.DisplayNameFor(model => model.PCV)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.QP)
+                @Html.DisplayNameFor(model => model.PB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PQRa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PQS)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Observation)
@@ -55,7 +64,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Termine)
             </th>
-            <th>Actions</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -72,21 +81,25 @@
                     @Html.DisplayFor(modelItem => item.NumTicket)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Mat)
+                    @Html.DisplayFor(modelItem => item.DateOp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Source)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Transporteur)
                 </td>
-               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mat)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TypeDeTransport.TypeTransport)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TypeDeCamion.TypeCamion)
                 </td>
-        
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateOP)
+                    @Html.DisplayFor(modelItem => item.Diametre)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PCC)
@@ -94,9 +107,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PCV)
                 </td>
-              
                 <td>
-                    @Html.DisplayFor(modelItem => item.QP)
+                    @Html.DisplayFor(modelItem => item.PB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PQRa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PQS)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Observation)
@@ -105,17 +123,14 @@
                     @Html.DisplayFor(modelItem => item.Termine)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Imp Bon</a> |
-                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
-
-
 @section Scripts {
     @*   @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

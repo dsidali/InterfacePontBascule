@@ -1,11 +1,11 @@
-﻿@model SortieTransfertDechet
+﻿@model ReceptionTransfertDechet
 
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Nouvelle sortie transfert dechets</h3>
+<h3>Nouvelle reception transfert dechets</h3>
 
 @*<h4>Nouvel achat</h4>*@
 <hr />
@@ -22,7 +22,7 @@
                 <input asp-for="NumBL" class="form-control" readonly="readonly" value="@ViewBag.NumBon" />
                 <span asp-validation-for="NumBL" class="text-danger"></span>
             </div>
-          
+
             <div class="form-group">
                 <label asp-for="Mat" class="control-label"></label>
                 <input asp-for="Mat" class="form-control" />
@@ -34,9 +34,9 @@
                 <span asp-validation-for="Transporteur" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Destination" class="control-label"></label>
-                <input asp-for="Destination" class="form-control" />
-                <span asp-validation-for="Destination" class="text-danger"></span>
+                <label asp-for="Provenance" class="control-label"></label>
+                <input asp-for="Provenance" class="form-control" />
+                <span asp-validation-for="Provenance" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TypeDeTransportId" class="control-label"></label>

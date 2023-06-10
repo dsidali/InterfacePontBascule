@@ -8,9 +8,10 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="New" class="btn btn-primary">Nouvelle operation</a> | <a asp-action="ListFinished" class="btn btn-primary">Lister terminés</a>
 </p>
-<table class="table">
+
+<table class="table table-bordered table-striped" id="listachats">
     <thead>
         <tr>
             <th>
@@ -112,3 +113,19 @@
 }
     </tbody>
 </table>
+
+@section Scripts {
+    @*   @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }*@
+
+    <script>
+        $(document).ready(function () {
+            $("#listachats").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#listachats_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+}

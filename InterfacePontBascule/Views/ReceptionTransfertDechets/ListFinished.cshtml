@@ -1,15 +1,17 @@
-﻿@model IEnumerable<InterfacePontBascule.Models.SortieTransfertDechet>
+﻿@model IEnumerable<InterfacePontBascule.Models.ReceptionTransfertDechet>
+
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>List des sortie transfert dechets traités</h1>
 
 <p>
-    <a asp-action="New" class="btn btn-primary">Nouvelle operation</a> | <a asp-action="ListFinished" class="btn btn-primary">Lister terminés</a>
+    <a asp-action="New" class="btn btn-primary">Nouvelle operation</a>
 </p>
+
 <table class="table table-bordered table-striped" id="listachats">
     <thead>
         <tr>
@@ -19,14 +21,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.NumBL)
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.DateOp)
+                @Html.DisplayNameFor(model => model.Mat)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Transporteur)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Destination)
+                @Html.DisplayNameFor(model => model.Provenance)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TypeDeTransport)
@@ -35,10 +38,10 @@
                 @Html.DisplayNameFor(model => model.TypeDeCamion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Mat)
+                @Html.DisplayNameFor(model => model.TypeDeDechet)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeDeDechet)
+                @Html.DisplayNameFor(model => model.DateOp)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PCC)
@@ -46,6 +49,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.PCV)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.PQS)
             </th>
@@ -55,7 +59,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Termine)
             </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -68,26 +72,27 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.NumBL)
                 </td>
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateOp)
+                    @Html.DisplayFor(modelItem => item.Mat)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Transporteur)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Destination)
+                    @Html.DisplayFor(modelItem => item.Provenance)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TypeDeTransport.Id)
+                    @Html.DisplayFor(modelItem => item.TypeDeTransport.TypeTransport)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TypeDeCamion.Id)
+                    @Html.DisplayFor(modelItem => item.TypeDeCamion.TypeCamion)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Mat)
+                    @Html.DisplayFor(modelItem => item.TypeDeDechet.TypeDechet)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TypeDeDechet.Id)
+                    @Html.DisplayFor(modelItem => item.DateOp)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PCC)
@@ -95,6 +100,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PCV)
                 </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.PQS)
                 </td>
@@ -105,14 +111,16 @@
                     @Html.DisplayFor(modelItem => item.Termine)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Imp Bon</a> |
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+
 
 @section Scripts {
     @*   @{

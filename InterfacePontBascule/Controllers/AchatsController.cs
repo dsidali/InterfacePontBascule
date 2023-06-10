@@ -14,10 +14,11 @@ namespace InterfacePontBascule.Controllers
     public class AchatsController : Controller
     {
         private readonly ApplicationDbContext _context;
+
         private readonly IWebHostEnvironment _webHostEnvironment;
-       // private readonly ILogger _logger;
         private  IComPortUsage _comPortUsage;
         private INumTicketBonManagement _numTicketBonManagement;
+
         public AchatsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment, IComPortUsage comPortUsage, INumTicketBonManagement numTicketBonManagement)
         {
             _context = context;

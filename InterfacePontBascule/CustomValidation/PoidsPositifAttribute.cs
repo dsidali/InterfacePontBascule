@@ -16,12 +16,12 @@ namespace InterfacePontBascule.CustomValidation
            int number = Convert.ToInt32(value);
             if (number == 0 )
             {
-                return new ValidationResult("Le poids ne doit pas être inférieur ou égal à 0");
+                return new ValidationResult("Cetet valeur ne doit pas être inférieure ou égal à 0");
             }
-         
-            
-                return new ValidationResult("Le poids ne doit pas être inférieur ou égal à 0");
-            
+
+
+            return new ValidationResult("Cetet valeur ne doit pas être inférieure ou égal à 0");
+
         }
     }
 }

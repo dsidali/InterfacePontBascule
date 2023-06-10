@@ -43,6 +43,7 @@
     <_ContentIncludedByDefault Remove="Views\Achats\New.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Pesages\ListFinished.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Pesages\New.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\SortieTransfertDechets\New.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1660,6 +1661,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Pesages\ListFinished.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\SortieTransfertDechets\New.cshtml" />
   </ItemGroup>
 
 </Project>

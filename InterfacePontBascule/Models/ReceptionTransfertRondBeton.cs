@@ -47,6 +47,7 @@ namespace InterfacePontBascule.Models
         [Required]
         public string Mat { get; set; }
 
+        [PoidsPositif]
         public int Diametre { get; set; }
 
         [Display(Name = "Charge")]

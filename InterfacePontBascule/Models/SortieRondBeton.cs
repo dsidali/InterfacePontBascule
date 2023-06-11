@@ -63,7 +63,7 @@ namespace InterfacePontBascule.Models
 
 
 
-
+        [PoidsPositif]
         public int Diametre { get; set; } = 0;
 
 

@@ -8,9 +8,10 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="New" class="btn btn-primary">Nouvelle operation</a> | <a asp-action="ListFinished" class="btn btn-primary">Lister terminés</a>
 </p>
-<table class="table">
+
+<table class="table table-bordered table-striped" id="listachats">
     <thead>
         <tr>
             <th>
@@ -59,56 +60,73 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Parc.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumBL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Transporteur)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Provenance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeDeTransport.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeDeCamion.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Diametre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PCC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PCV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PQS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Termine)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Parc.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumBL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Transporteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Provenance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeDeTransport.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeDeCamion.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diametre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PCC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PCV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PQS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Termine)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@section Scripts {
+    @*   @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }*@
+
+    <script>
+        $(document).ready(function () {
+            $("#listachats").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#listachats_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+}

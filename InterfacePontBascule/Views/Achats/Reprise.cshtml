@@ -11,28 +11,23 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Reprise">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group" hidden>
+            <div class="form-group">
                 <label asp-for="ParcId" class="control-label"></label>
                 <select asp-for="ParcId" class="form-control" asp-items="ViewBag.ParcId"></select>
                 <span asp-validation-for="ParcId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumBonA" class="control-label"></label>
-                <input asp-for="NumBonA" class="form-control" readonly="readonly"/>
-                <span asp-validation-for="NumBonA" class="text-danger"></span>
+                <label asp-for="NumBL" class="control-label"></label>
+                <input asp-for="NumBL" class="form-control" />
+                <span asp-validation-for="NumBL" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumTicket" class="control-label"></label>
-                <input asp-for="NumTicket" class="form-control" readonly="readonly"/>
-                <span asp-validation-for="NumTicket" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Mat" class="control-label"></label>
-                <input asp-for="Mat" class="form-control" />
-                <span asp-validation-for="Mat" class="text-danger"></span>
+                <label asp-for="DateOp" class="control-label"></label>
+                <input asp-for="DateOp" class="form-control" />
+                <span asp-validation-for="DateOp" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Transporteur" class="control-label"></label>
@@ -40,69 +35,57 @@
                 <span asp-validation-for="Transporteur" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Source" class="control-label"></label>
-                <input asp-for="Source" class="form-control" />
-                <span asp-validation-for="Source" class="text-danger"></span>
+                <label asp-for="Provenance" class="control-label"></label>
+                <input asp-for="Provenance" class="form-control" />
+                <span asp-validation-for="Provenance" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TypeDeTransportId" class="control-label"></label>
-                <select asp-for="TypeDeTransportId" class="form-select" asp-items="ViewBag.TypeDeTransportId"></select>
+                <select asp-for="TypeDeTransportId" class="form-control" asp-items="ViewBag.TypeDeTransportId"></select>
                 <span asp-validation-for="TypeDeTransportId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TypeDeCamionId" class="control-label"></label>
-                <select asp-for="TypeDeCamionId" class="form-select" asp-items="ViewBag.TypeDeCamionId"></select>
+                <select asp-for="TypeDeCamionId" class="form-control" asp-items="ViewBag.TypeDeCamionId"></select>
                 <span asp-validation-for="TypeDeCamionId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Mat" class="control-label"></label>
+                <input asp-for="Mat" class="form-control" />
+                <span asp-validation-for="Mat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="TypeDeDechetId" class="control-label"></label>
-                <select asp-for="TypeDeDechetId" class="form-select" asp-items="ViewBag.TypeDeDechetId"></select>
+                <select asp-for="TypeDeDechetId" class="form-control" asp-items="ViewBag.TypeDeDechetId"></select>
                 <span asp-validation-for="TypeDeDechetId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DateOP" class="control-label"></label>
-                <input asp-for="DateOP" class="form-control" readonly="readonly" />
-                <span asp-validation-for="DateOP" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="PCC" class="control-label"></label>
-                <input asp-for="PCC" class="form-control" id="pcharge" min="0" readonly="readonly"/>
+                <input asp-for="PCC" class="form-control" />
                 <span asp-validation-for="PCC" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PCV" class="control-label"></label>
-                <input asp-for="PCV" class="form-control" id="tare" value="0" min="0" readonly="readonly"/>
+                <input asp-for="PCV" class="form-control" />
                 <span asp-validation-for="PCV" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PB" class="control-label"></label>
-                <input asp-for="PB" class="form-control" id="pbrut" value="0" min="0" readonly="" />
-                <span asp-validation-for="PB" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PQRa" class="control-label"></label>
-                <input asp-for="PQRa" class="form-control" id="rabais" value="0" min="0" />
-                <span asp-validation-for="PQRa" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="PQS" class="control-label"></label>
-                <input asp-for="PQS" class="form-control" id="pnet" readonly="readonly"/>
+                <input asp-for="PQS" class="form-control" />
                 <span asp-validation-for="PQS" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Observation" class="control-label"></label>
-                <input asp-for="Observation" class="form-control" value="0" min="0" readonly="readonly"/>
+                <input asp-for="Observation" class="form-control" />
                 <span asp-validation-for="Observation" class="text-danger"></span>
             </div>
-            <div class="form-group form-check" hidden>
+            <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Termine" checked="checked" readonly="readonly"/> @Html.DisplayNameFor(model => model.Termine)
+                    <input class="form-check-input" asp-for="Termine" /> @Html.DisplayNameFor(model => model.Termine)
                 </label>
             </div>
             <div class="form-group">
-                <input type="button" id="pesertare" value="Peser" class="btn btn-info" /> |
-                <input type="button" id="calculer" value="Calculer" class="btn btn-info" disabled="disabled"/> | 
-                <input type="submit" value="Enregistrer" class="btn btn-primary" id="sbmt" disabled="disabled"/>
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>

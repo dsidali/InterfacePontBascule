@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterfacePontBascule.CustomValidation;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace InterfacePontBascule.Models
@@ -19,12 +20,12 @@ namespace InterfacePontBascule.Models
         public string NumTicket { get; set; }
 
 
-      
+
 
         //public int TransporteurId { get; set; }
         //public Transporteur Transporteur { get; set; }
 
-
+        [Display(Name = "Date")]
         public DateTime DateOp { get; set; }
         // public TimeSpan HeureOP { get; set; }
 
@@ -66,14 +67,19 @@ namespace InterfacePontBascule.Models
         public int Diametre { get; set; } = 0;
 
 
-        public int PCC { get; set; } = 0;//pesage a charge
+        [Display(Name = "Charge")]
+        [PoidsPositif]
+        public int PCC { get; set; } //pesage a charge
 
-        public int PCV { get; set; } = 0;//pesage a vide
+        [Display(Name = "Tare")]
+        [PoidsPositif]
+        public int PCV { get; set; } //pesage a vide
 
+        [Display(Name = "Brut")]
         public int PB { get; set; } = 0;//poids brut
-
+        [Display(Name = "Rabais")]
         public int PQRa { get; set; } = 0;
-
+        [Display(Name = "Net")]
         public int PQS { get; set; } = 0;
 
 

@@ -28,10 +28,10 @@ namespace InterfacePontBascule.Models
         [Required]
         public string NumTicket { get; set; }
 
-      
 
 
-       
+
+        [Display(Name = "Date")]
         public DateTime DateOp { get; set; }
 
         [Required]
@@ -62,15 +62,22 @@ namespace InterfacePontBascule.Models
 
         public int Diametre { get; set; }
 
+        [Display(Name = "Charge")]
         [PoidsPositif]
         public int PCC { get; set; } //pesage a charge
 
+        [Display(Name = "Tare")]
+        [PoidsPositif]
         public int PCV { get; set; } //pesage a vide
 
+        [Display(Name = "Brut")]
+        [PoidsPositif]
         public int PB { get; set; } //poids brut
 
+        [Display(Name = "Rabais")]
         public int PQRa { get; set; }
 
+        [Display(Name = "Net")]
         public int PQS { get; set; }
 
         public string Observation { get; set; }

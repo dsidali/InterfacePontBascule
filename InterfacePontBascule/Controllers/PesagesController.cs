@@ -82,8 +82,9 @@ namespace InterfacePontBascule.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", pesage.ParcId);
-            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", pesage.TypeDeCamionId);
-            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", pesage.TypeDeTransportId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", pesage.TypeDeCamionId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", pesage.TypeDeTransportId);
+
             ViewBag.pesage = "active";
             return View(pesage);
         }
@@ -102,8 +103,9 @@ namespace InterfacePontBascule.Controllers
                 return NotFound();
             }
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", pesage.ParcId);
-            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", pesage.TypeDeCamionId);
-            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", pesage.TypeDeTransportId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", pesage.TypeDeCamionId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", pesage.TypeDeTransportId);
+
             ViewBag.pesage = "active";
             return View(pesage);
         }
@@ -253,8 +255,9 @@ namespace InterfacePontBascule.Controllers
                 return NotFound();
             }
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", pesage.ParcId);
-            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "Id", pesage.TypeDeCamionId);
-            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "Id", pesage.TypeDeTransportId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", pesage.TypeDeCamionId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", pesage.TypeDeTransportId);
+           
             ViewBag.pesages = "active";
             return View(pesage);
         }

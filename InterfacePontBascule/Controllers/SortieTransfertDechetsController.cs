@@ -330,6 +330,74 @@ namespace InterfacePontBascule.Controllers
 
 
 
+
+
+
+
+        public async Task<IActionResult> Modifier(int? id)
+        {
+
+            if (id == null || _context.SortieTransfertDechets == null)
+            {
+                return NotFound();
+            }
+
+            var sortieTransfertDechet = await _context.SortieTransfertDechets.FindAsync(id);
+            if (sortieTransfertDechet == null)
+            {
+                return NotFound();
+            }
+            ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", sortieTransfertDechet.ParcId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", sortieTransfertDechet.TypeDeCamionId);
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "TypeDechet", sortieTransfertDechet.TypeDeDechetId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", sortieTransfertDechet.TypeDeTransportId);
+            ViewBag.sortieTransfertDechets = "active";
+            return View(sortieTransfertDechet);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Modifier(int id, SortieTransfertDechet sortieTransfertDechet)
+        {
+            if (id != sortieTransfertDechet.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(sortieTransfertDechet);
+                    await _context.SaveChangesAsync();
+
+
+
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!SortieTransfertDechetExists(sortieTransfertDechet.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Details), new { id = sortieTransfertDechet.Id });
+            }
+            ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", sortieTransfertDechet.ParcId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", sortieTransfertDechet.TypeDeCamionId);
+            ViewData["TypeDeDechetId"] = new SelectList(_context.TypeDeDechets, "Id", "TypeDechet", sortieTransfertDechet.TypeDeDechetId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", sortieTransfertDechet.TypeDeTransportId);
+            ViewBag.sortieTransfertDechets = "active";
+            return View(sortieTransfertDechet);
+        }
+
+
+
+
         public async Task<IActionResult> ListFinished()
         {
             var applicationDbContext = _context.SortieTransfertDechets.Where(a => a.Termine == true).Include(a => a.Parc).Include(a => a.TypeDeCamion).Include(a => a.TypeDeDechet).Include(a => a.TypeDeTransport);

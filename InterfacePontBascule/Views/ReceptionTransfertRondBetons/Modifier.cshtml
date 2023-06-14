@@ -1,17 +1,17 @@
-﻿@model SortieTransfertRondBeton
+﻿@model ReceptionTransfertRondBeton
 
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Nouvelle sortie transfert dechets</h3>
+<h3>Nouvelle reception transfert dechets</h3>
 
 @*<h4>Nouvel achat</h4>*@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="New">
+        <form asp-action="Modifier">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group" hidden>
                 <label asp-for="ParcId" class="control-label"></label>
@@ -34,9 +34,9 @@
                 <span asp-validation-for="Transporteur" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Destination" class="control-label"></label>
-                <input asp-for="Destination" class="form-control" />
-                <span asp-validation-for="Destination" class="text-danger"></span>
+                <label asp-for="Provenance" class="control-label"></label>
+                <input asp-for="Provenance" class="form-control" />
+                <span asp-validation-for="Provenance" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TypeDeTransportId" class="control-label"></label>
@@ -55,7 +55,9 @@
                 @*   <input type="datetime-local" asp-for="DateOP" value="@(DateTime.Now.ToString("yyyy-MM-dd HH:mm"))" />*@
                 <span asp-validation-for="DateOp" class="text-danger"></span>
             </div>
-            
+
+
+
             <div class="form-group">
                 <label asp-for="Diametre" class="control-label"></label>
                 <input asp-for="Diametre" class="form-control" type="number" value="0" min="0" />
@@ -63,10 +65,9 @@
 
             </div>
 
-
             <div class="form-group">
                 <label asp-for="PCC" class="control-label"></label>
-                <input asp-for="PCC" class="form-control" type="number" value="0" min="0" id="input" readonly="readonly"/>
+                <input asp-for="PCC" class="form-control" type="number" min="0" id="input" readonly="readonly"/>
                 <span asp-validation-for="PCC" class="text-danger"></span>
 
             </div>

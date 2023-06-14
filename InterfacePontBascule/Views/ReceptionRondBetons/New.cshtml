@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Nouvel achat</h3>
+<h3>Nouvelle reception rond à beton</h3>
 
 @*<h4>Nouvel achat</h4>*@
 <hr />
@@ -71,7 +71,7 @@
 
             <div class="form-group">
                 <label asp-for="PCC" class="control-label"></label>
-                <input asp-for="PCC" class="form-control" type="number" value="0" min="0" id="input" />
+                <input asp-for="PCC" class="form-control" type="number" value="0" min="0" id="input" readonly="readonly"/>
                 <span asp-validation-for="PCC" class="text-danger"></span>
 
             </div>

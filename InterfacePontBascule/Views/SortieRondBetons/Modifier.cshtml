@@ -1,28 +1,32 @@
-﻿@model SortieTransfertRondBeton
+﻿@model InterfacePontBascule.Models.SortieRondBeton
 
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Nouvelle sortie transfert dechets</h3>
+<h3>Modifier sortie rond à beton</h3>
 
 @*<h4>Nouvel achat</h4>*@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="New">
+        <form asp-action="Modifier">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group" hidden>
                 <label asp-for="ParcId" class="control-label"></label>
                 <select asp-for="ParcId" class="form-control" asp-items="ViewBag.ParcId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="NumBL" class="control-label"></label>
-                <input asp-for="NumBL" class="form-control" readonly="readonly" value="@ViewBag.NumBon" />
-                <span asp-validation-for="NumBL" class="text-danger"></span>
+                <label asp-for="NumBonA" class="control-label"></label>
+                <input asp-for="NumBonA" class="form-control" readonly="readonly" value="@ViewBag.NumBon" />
+                <span asp-validation-for="NumBonA" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="NumTicket" class="control-label"></label>
+                <input asp-for="NumTicket" class="form-control" readonly="readonly" value="@ViewBag.NumTicket" />
+                <span asp-validation-for="NumTicket" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Mat" class="control-label"></label>
                 <input asp-for="Mat" class="form-control" />
@@ -55,10 +59,11 @@
                 @*   <input type="datetime-local" asp-for="DateOP" value="@(DateTime.Now.ToString("yyyy-MM-dd HH:mm"))" />*@
                 <span asp-validation-for="DateOp" class="text-danger"></span>
             </div>
-            
+
+
             <div class="form-group">
                 <label asp-for="Diametre" class="control-label"></label>
-                <input asp-for="Diametre" class="form-control" type="number" value="0" min="0" />
+                <input asp-for="Diametre" class="form-control" type="number" value="0" min="0" id="diametre" />
                 <span asp-validation-for="Diametre" class="text-danger"></span>
 
             </div>
@@ -66,7 +71,7 @@
 
             <div class="form-group">
                 <label asp-for="PCC" class="control-label"></label>
-                <input asp-for="PCC" class="form-control" type="number" value="0" min="0" id="input" readonly="readonly"/>
+                <input asp-for="PCC" class="form-control" type="number"  min="0" id="input" readonly="readonly"/>
                 <span asp-validation-for="PCC" class="text-danger"></span>
 
             </div>

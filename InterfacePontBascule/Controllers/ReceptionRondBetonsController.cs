@@ -326,7 +326,64 @@ namespace InterfacePontBascule.Controllers
             return View(receptionRondBeton);
         }
 
+        public async Task<IActionResult> Modifier(int? id)
+        {
 
+            if (id == null || _context.ReceptionRondBetons == null)
+            {
+                return NotFound();
+            }
+
+            var receptionRondBeton = await _context.ReceptionRondBetons.FindAsync(id);
+            if (receptionRondBeton == null)
+            {
+                return NotFound();
+            }
+            ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", receptionRondBeton.ParcId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", receptionRondBeton.TypeDeCamionId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", receptionRondBeton.TypeDeTransportId);
+            ViewBag.receptionRondBetons = "active";
+            return View(receptionRondBeton);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Modifier(int id, ReceptionRondBeton receptionRondBeton)
+        {
+            if (id != receptionRondBeton.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(receptionRondBeton);
+                    await _context.SaveChangesAsync();
+
+
+
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ReceptionRondBetonExists(receptionRondBeton.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Details), new { id = receptionRondBeton.Id });
+            }
+            ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", receptionRondBeton.ParcId);
+            ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", receptionRondBeton.TypeDeCamionId);
+            ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", receptionRondBeton.TypeDeTransportId);
+            ViewBag.receptionRondBetons = "active";
+            return View(receptionRondBeton);
+        }
 
         public async Task<IActionResult> ListFinished()
         {

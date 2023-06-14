@@ -43,6 +43,7 @@
     <_ContentIncludedByDefault Remove="Views\Achats\New.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Pesages\ListFinished.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Pesages\New.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\ReceptionTransfertDechets\Modifier.cshtml" />
     <_ContentIncludedByDefault Remove="Views\ReceptionTransfertDechets\New.cshtml" />
     <_ContentIncludedByDefault Remove="Views\SortieTransfertDechets\New.cshtml" />
     <_ContentIncludedByDefault Remove="Views\SortieTransfertRondBetons\New.cshtml" />
@@ -1680,6 +1681,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\SortieTransfertRondBetons\Reprise.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\ReceptionTransfertDechets\Modifier.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AspNetCore.Reporting;
 using InterfacePontBascule.Business;
+using InterfacePontBascule.Data;
+using InterfacePontBascule.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using InterfacePontBascule.Data;
-using InterfacePontBascule.Models;
-using AspNetCore.Reporting;
 
 namespace InterfacePontBascule.Controllers
 {
@@ -184,14 +180,14 @@ namespace InterfacePontBascule.Controllers
             {
                 _context.Pesages.Remove(pesage);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PesageExists(int id)
         {
-          return (_context.Pesages?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Pesages?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
         /********************************************************************/
@@ -257,7 +253,7 @@ namespace InterfacePontBascule.Controllers
             ViewData["ParcId"] = new SelectList(_context.Parcs, "Id", "Id", pesage.ParcId);
             ViewData["TypeDeCamionId"] = new SelectList(_context.TypeDeCamions, "Id", "TypeCamion", pesage.TypeDeCamionId);
             ViewData["TypeDeTransportId"] = new SelectList(_context.TypeDeTransports, "Id", "TypeTransport", pesage.TypeDeTransportId);
-           
+
             ViewBag.pesages = "active";
             return View(pesage);
         }
@@ -414,13 +410,27 @@ namespace InterfacePontBascule.Controllers
 
             string mimtype = "";
             int extension = 1;
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportReceptionPesage.rdlc";
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportPesageLibre.rdlc";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             //  parameters.Add("Id", "Welcome");
 
 
+            parameters.Add("Numero", pesage.NumBonA);
+            parameters.Add("Nom", pesage.Transporteur);
+            parameters.Add("Date", pesage.DateOP.ToShortDateString());
+            parameters.Add("Heure", pesage.DateOP.TimeOfDay.ToString());
+            parameters.Add("NumTicket", pesage.NumTicket);
+            parameters.Add("Brut", pesage.PCC.ToString());
+            parameters.Add("Tar", pesage.PCV.ToString());
 
+            parameters.Add("Netrecu", pesage.QP.ToString());
+
+            parameters.Add("Observation", pesage.Observation);
+            parameters.Add("ParcId", pesage.Parc.Id.ToString());
+            parameters.Add("TypeTransport", pesage.TypeDeTransport.TypeTransport);
+            parameters.Add("User", User.Identity.Name);
+            parameters.Add("Matricule", pesage.Mat);
 
             LocalReport localReport = new LocalReport(path);
             var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimtype);
@@ -448,13 +458,27 @@ namespace InterfacePontBascule.Controllers
 
             string mimtype = "";
             int extension = 1;
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportReceptionPesage.rdlc";
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportPesageLibre.rdlc";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             //  parameters.Add("Id", "Welcome");
 
+            parameters.Add("Numero", pesage.NumBonA);
+            parameters.Add("Nom", pesage.Transporteur);
+            parameters.Add("Date", pesage.DateOP.ToShortDateString());
+            parameters.Add("Heure", pesage.DateOP.TimeOfDay.ToString());
+            parameters.Add("NumTicket", pesage.NumTicket);
+            parameters.Add("Brut", pesage.PCC.ToString());
+            parameters.Add("Tar", pesage.PCV.ToString());
 
-            
+            parameters.Add("Netrecu", pesage.QP.ToString());
+
+            parameters.Add("Observation", pesage.Observation);
+            parameters.Add("ParcId", pesage.Parc.Id.ToString());
+            parameters.Add("TypeTransport", pesage.TypeDeTransport.TypeTransport);
+            parameters.Add("User", User.Identity.Name);
+            parameters.Add("Matricule", pesage.Mat);
+
 
             LocalReport localReport = new LocalReport(path);
             var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimtype);

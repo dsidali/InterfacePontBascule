@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AspNetCore.Reporting;
+﻿using AspNetCore.Reporting;
 using InterfacePontBascule.Business;
+using InterfacePontBascule.Data;
+using InterfacePontBascule.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using InterfacePontBascule.Data;
-using InterfacePontBascule.Models;
 
 namespace InterfacePontBascule.Controllers
 {
@@ -31,7 +27,7 @@ namespace InterfacePontBascule.Controllers
         // GET: SortieRondBetons
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.SortieRondBetons.Where(a=>a.Termine==false).Include(s => s.TypeDeCamion).Include(s => s.TypeDeTransport);
+            var applicationDbContext = _context.SortieRondBetons.Where(a => a.Termine == false).Include(s => s.TypeDeCamion).Include(s => s.TypeDeTransport);
 
             ViewBag.rbopen = "menu-open";
             ViewBag.rb = "active";
@@ -209,14 +205,14 @@ namespace InterfacePontBascule.Controllers
             {
                 _context.SortieRondBetons.Remove(sortieRondBeton);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool SortieRondBetonExists(int id)
         {
-          return (_context.SortieRondBetons?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.SortieRondBetons?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
 
@@ -452,12 +448,29 @@ namespace InterfacePontBascule.Controllers
 
             string mimtype = "";
             int extension = 1;
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportReceptionSortieRondBeton.rdlc";
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportSortieRondBeton.rdlc";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             //  parameters.Add("Id", "Welcome");
 
 
+            parameters.Add("TypeOp", "Chargement");
+            parameters.Add("Numero", sortieRondBeton.NumBonA);
+            parameters.Add("Nom", sortieRondBeton.Transporteur);
+            parameters.Add("Date", sortieRondBeton.DateOp.ToShortDateString());
+            parameters.Add("Heure", sortieRondBeton.DateOp.TimeOfDay.ToString());
+            parameters.Add("NumTicket", sortieRondBeton.NumTicket);
+            parameters.Add("Brut", sortieRondBeton.PCC.ToString());
+            parameters.Add("Tar", sortieRondBeton.PCV.ToString());
+            parameters.Add("Net", sortieRondBeton.PB.ToString());
+            parameters.Add("Rabais", sortieRondBeton.PQRa.ToString());
+            parameters.Add("Netrecu", sortieRondBeton.PQS.ToString());
+            parameters.Add("Observation", sortieRondBeton.Observation);
+            parameters.Add("ParcId", sortieRondBeton.Parc.Id.ToString());
+            parameters.Add("TypeTransport", sortieRondBeton.TypeDeTransport.TypeTransport);
+            parameters.Add("User", User.Identity.Name);
+            parameters.Add("Matricule", sortieRondBeton.Mat);
+            parameters.Add("Diametre", sortieRondBeton.Diametre.ToString());
 
 
 
@@ -487,11 +500,28 @@ namespace InterfacePontBascule.Controllers
 
             string mimtype = "";
             int extension = 1;
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportReceptionSortieRondBeton.rdlc";
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportSortieRondBeton.rdlc";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             //  parameters.Add("Id", "Welcome");
 
+            parameters.Add("TypeOp", "Sortie");
+            parameters.Add("Numero", sortieRondBeton.NumBonA);
+            parameters.Add("Nom", sortieRondBeton.Transporteur);
+            parameters.Add("Date", sortieRondBeton.DateOp.ToShortDateString());
+            parameters.Add("Heure", sortieRondBeton.DateOp.TimeOfDay.ToString());
+            parameters.Add("NumTicket", sortieRondBeton.NumTicket);
+            parameters.Add("Brut", sortieRondBeton.PCC.ToString());
+            parameters.Add("Tar", sortieRondBeton.PCV.ToString());
+            parameters.Add("Net", sortieRondBeton.PB.ToString());
+            parameters.Add("Rabais", sortieRondBeton.PQRa.ToString());
+            parameters.Add("Netrecu", sortieRondBeton.PQS.ToString());
+            parameters.Add("Observation", sortieRondBeton.Observation);
+            parameters.Add("ParcId", sortieRondBeton.Parc.Id.ToString());
+            parameters.Add("TypeTransport", sortieRondBeton.TypeDeTransport.TypeTransport);
+            parameters.Add("User", User.Identity.Name);
+            parameters.Add("Matricule", sortieRondBeton.Mat);
+            parameters.Add("Diametre", sortieRondBeton.Diametre.ToString());
 
 
 

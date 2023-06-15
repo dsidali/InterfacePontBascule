@@ -20,7 +20,7 @@
                     <Style />
                   </TextRun>
                   <TextRun>
-                    <Value> de transfert </Value>
+                    <Value>    de transfert </Value>
                     <Style />
                   </TextRun>
                   <TextRun>
@@ -33,9 +33,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.3175cm</Top>
-            <Left>4.67697cm</Left>
+            <Left>4.28891cm</Left>
             <Height>0.6cm</Height>
-            <Width>8.13972cm</Width>
+            <Width>8.52778cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -72,9 +72,9 @@
               </Line>
               <Line Name="Line7">
                 <Top>3.33478cm</Top>
-                <Left>9.64142cm</Left>
+                <Left>9.57849cm</Left>
                 <Height>0cm</Height>
-                <Width>6.90557cm</Width>
+                <Width>6.9685cm</Width>
                 <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
@@ -602,7 +602,7 @@
               </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.19006cm</Top>
+            <Top>4.4172cm</Top>
             <Left>0.96575cm</Left>
             <Height>4.57024cm</Height>
             <Width>16.54699cm</Width>
@@ -629,9 +629,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
             <Top>0.3175cm</Top>
-            <Left>13.07184cm</Left>
+            <Left>12.92252cm</Left>
             <Height>0.6cm</Height>
-            <Width>0.85958cm</Width>
+            <Width>1.0089cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -709,7 +709,7 @@
             <Sizing>FitProportional</Sizing>
             <Top>0.3175cm</Top>
             <Left>0.55011cm</Left>
-            <Height>1.26187cm</Height>
+            <Height>0.97965cm</Height>
             <Width>3.45539cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
@@ -833,7 +833,7 @@
               </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>2.30968cm</Top>
+            <Top>1.53682cm</Top>
             <Left>0.98107cm</Left>
             <Height>2.34625cm</Height>
             <Width>5cm</Width>
@@ -958,7 +958,7 @@
               </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>2.30968cm</Top>
+            <Top>1.53682cm</Top>
             <Left>6.01634cm</Left>
             <Height>2.34625cm</Height>
             <Width>5.19699cm</Width>
@@ -1147,7 +1147,7 @@
               </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>2.30968cm</Top>
+            <Top>1.53682cm</Top>
             <Left>11.55842cm</Left>
             <Height>2.34625cm</Height>
             <Width>5.83558cm</Width>
@@ -1173,7 +1173,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>10.08274cm</Top>
+            <Top>9.30988cm</Top>
             <Left>0.96575cm</Left>
             <Height>0.6cm</Height>
             <Width>16.88037cm</Width>
@@ -1189,17 +1189,17 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>4.32523in</Height>
+        <Height>4.06134in</Height>
         <Style />
       </Body>
       <Width>7.40625in</Width>
       <Page>
-        <PageHeight>29.7cm</PageHeight>
+        <PageHeight>14.8cm</PageHeight>
         <PageWidth>21cm</PageWidth>
-        <LeftMargin>1cm</LeftMargin>
-        <RightMargin>1cm</RightMargin>
-        <TopMargin>1cm</TopMargin>
-        <BottomMargin>1cm</BottomMargin>
+        <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>0.5cm</RightMargin>
+        <TopMargin>0.5cm</TopMargin>
+        <BottomMargin>0.5cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>

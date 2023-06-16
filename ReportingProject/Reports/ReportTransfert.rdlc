@@ -242,7 +242,7 @@
                 <Top>0.14965cm</Top>
                 <Left>9.74782cm</Left>
                 <Height>0.6cm</Height>
-                <Width>1.15062cm</Width>
+                <Width>1.24701cm</Width>
                 <ZIndex>9</ZIndex>
                 <Style>
                   <Border>
@@ -272,7 +272,7 @@
                 <Top>1.19415cm</Top>
                 <Left>9.74782cm</Left>
                 <Height>0.60901cm</Height>
-                <Width>0.83313cm</Width>
+                <Width>1.15062cm</Width>
                 <ZIndex>10</ZIndex>
                 <Style>
                   <Border>
@@ -302,7 +302,7 @@
                 <Top>2.1474cm</Top>
                 <Left>9.71254cm</Left>
                 <Height>0.6cm</Height>
-                <Width>0.83313cm</Width>
+                <Width>1.1859cm</Width>
                 <ZIndex>11</ZIndex>
                 <Style>
                   <Border>
@@ -381,7 +381,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Categorie: </Value>
+                        <Value>Categorie:     </Value>
                         <Style />
                       </TextRun>
                       <TextRun>
@@ -393,10 +393,10 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox28</rd:DefaultName>
-                <Top>0.14965cm</Top>
-                <Left>0.254cm</Left>
+                <Top>0.16024cm</Top>
+                <Left>0.2852cm</Left>
                 <Height>0.6cm</Height>
-                <Width>5.41042cm</Width>
+                <Width>7.36834cm</Width>
                 <ZIndex>14</ZIndex>
                 <Style>
                   <Border>

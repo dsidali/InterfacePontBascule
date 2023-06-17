@@ -20,7 +20,7 @@
                     <Style />
                   </TextRun>
                   <TextRun>
-                    <Value>    de transfert </Value>
+                    <Value>      de transfert </Value>
                     <Style />
                   </TextRun>
                   <TextRun>
@@ -329,8 +329,8 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox26</rd:DefaultName>
-                <Top>3.73076cm</Top>
-                <Left>9.64199cm</Left>
+                <Top>3.66726cm</Top>
+                <Left>9.83249cm</Left>
                 <Height>0.6cm</Height>
                 <Width>2.5cm</Width>
                 <ZIndex>12</ZIndex>
@@ -359,10 +359,10 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox27</rd:DefaultName>
-                <Top>2.47019cm</Top>
+                <Top>2.15269cm</Top>
                 <Left>0.23757cm</Left>
                 <Height>0.6cm</Height>
-                <Width>2.05021cm</Width>
+                <Width>2.5cm</Width>
                 <ZIndex>13</ZIndex>
                 <Style>
                   <Border>
@@ -423,9 +423,9 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Observation</rd:DefaultName>
-                <Top>3.17603cm</Top>
+                <Top>2.92908cm</Top>
                 <Left>0.254cm</Left>
-                <Height>1.15475cm</Height>
+                <Height>1.4017cm</Height>
                 <Width>9.14104cm</Width>
                 <ZIndex>15</ZIndex>
                 <Style>
@@ -543,10 +543,10 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Netrecu</rd:DefaultName>
-                <Top>3.71475cm</Top>
-                <Left>12.34421cm</Left>
+                <Top>3.65125cm</Top>
+                <Left>13.071cm</Left>
                 <Height>0.6cm</Height>
-                <Width>2.5cm</Width>
+                <Width>1.89146cm</Width>
                 <ZIndex>19</ZIndex>
                 <Style>
                   <Border>

@@ -453,12 +453,28 @@ namespace InterfacePontBascule.Controllers
 
             string mimtype = "";
             int extension = 1;
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportReceptionReceptionTransfertRondBeton.rdlc";
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportTransfert.rdlc";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             //  parameters.Add("Id", "Welcome");
 
-
+            parameters.Add("type", "dechargement");
+            parameters.Add("NumTicket", receptionTransfertRondBeton.NumBL);
+            parameters.Add("Numero", receptionTransfertRondBeton.NumBL);
+            parameters.Add("Nom", receptionTransfertRondBeton.Transporteur);
+            parameters.Add("Date", receptionTransfertRondBeton.DateOp.ToShortDateString());
+            parameters.Add("Heure", receptionTransfertRondBeton.DateOp.TimeOfDay.ToString());
+            parameters.Add("Brut", receptionTransfertRondBeton.PCC.ToString());
+            parameters.Add("Tar", receptionTransfertRondBeton.PCV.ToString());
+            parameters.Add("Net", receptionTransfertRondBeton.PQS.ToString());
+            parameters.Add("Netrecu", receptionTransfertRondBeton.PQS.ToString());
+            parameters.Add("Categorie", "Ronds à beton");
+            parameters.Add("Observation", receptionTransfertRondBeton.Observation);
+            parameters.Add("ParcId", receptionTransfertRondBeton.Parc.Id.ToString());
+            parameters.Add("TypeTransport", receptionTransfertRondBeton.TypeDeTransport.TypeTransport);
+            parameters.Add("User", User.Identity.Name);
+            parameters.Add("Matricule", receptionTransfertRondBeton.Mat);
+            parameters.Add("DechetOrDiamatre", receptionTransfertRondBeton.Diametre.ToString());
 
 
 
@@ -488,12 +504,28 @@ namespace InterfacePontBascule.Controllers
 
             string mimtype = "";
             int extension = 1;
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportReceptionReceptionTransfertRondBeton.rdlc";
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportTransfert.rdlc";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             //  parameters.Add("Id", "Welcome");
 
-
+            parameters.Add("type", "reception");
+            parameters.Add("NumTicket", receptionTransfertRondBeton.NumBL);
+            parameters.Add("Numero", receptionTransfertRondBeton.NumBL);
+            parameters.Add("Nom", receptionTransfertRondBeton.Transporteur);
+            parameters.Add("Date", receptionTransfertRondBeton.DateOp.ToShortDateString());
+            parameters.Add("Heure", receptionTransfertRondBeton.DateOp.TimeOfDay.ToString());
+            parameters.Add("Brut", receptionTransfertRondBeton.PCC.ToString());
+            parameters.Add("Tar", receptionTransfertRondBeton.PCV.ToString());
+            parameters.Add("Net", receptionTransfertRondBeton.PQS.ToString());
+            parameters.Add("Netrecu", receptionTransfertRondBeton.PQS.ToString());
+            parameters.Add("Categorie", "Ronds à beton");
+            parameters.Add("Observation", receptionTransfertRondBeton.Observation);
+            parameters.Add("ParcId", receptionTransfertRondBeton.Parc.Id.ToString());
+            parameters.Add("TypeTransport", receptionTransfertRondBeton.TypeDeTransport.TypeTransport);
+            parameters.Add("User", User.Identity.Name);
+            parameters.Add("Matricule", receptionTransfertRondBeton.Mat);
+            parameters.Add("DechetOrDiamatre", receptionTransfertRondBeton.Diametre.ToString());
 
 
             LocalReport localReport = new LocalReport(path);

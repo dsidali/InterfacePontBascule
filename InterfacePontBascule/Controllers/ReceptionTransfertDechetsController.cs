@@ -466,13 +466,29 @@ namespace InterfacePontBascule.Controllers
 
             string mimtype = "";
             int extension = 1;
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportReceptionReceptionTransfertDechet.rdlc";
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportTransfert.rdlc";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             //  parameters.Add("Id", "Welcome");
 
 
-
+            parameters.Add("type", "dechargement");
+            parameters.Add("NumTicket", receptionTransfertDechet.NumBL);
+            parameters.Add("Numero", receptionTransfertDechet.NumBL);
+            parameters.Add("Nom", receptionTransfertDechet.Transporteur);
+            parameters.Add("Date", receptionTransfertDechet.DateOp.ToShortDateString());
+            parameters.Add("Heure", receptionTransfertDechet.DateOp.TimeOfDay.ToString());
+            parameters.Add("Brut", receptionTransfertDechet.PCC.ToString());
+            parameters.Add("Tar", receptionTransfertDechet.PCV.ToString());
+            parameters.Add("Net", receptionTransfertDechet.PQS.ToString());
+            parameters.Add("Netrecu", receptionTransfertDechet.PQS.ToString());
+            parameters.Add("Categorie", "Dechets ferreux");
+            parameters.Add("Observation", receptionTransfertDechet.Observation);
+            parameters.Add("ParcId", receptionTransfertDechet.Parc.Id.ToString());
+            parameters.Add("TypeTransport", receptionTransfertDechet.TypeDeTransport.TypeTransport);
+            parameters.Add("User", User.Identity.Name);
+            parameters.Add("Matricule", receptionTransfertDechet.Mat);
+            parameters.Add("DechetOrDiamatre", receptionTransfertDechet.TypeDeDechet.TypeDechet);
 
 
             LocalReport localReport = new LocalReport(path);
@@ -502,12 +518,28 @@ namespace InterfacePontBascule.Controllers
 
             string mimtype = "";
             int extension = 1;
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportReceptionReceptionTransfertDechet.rdlc";
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\ReportTransfert.rdlc";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             //  parameters.Add("Id", "Welcome");
 
-
+            parameters.Add("type", "Reception");
+            parameters.Add("NumTicket", receptionTransfertDechet.NumBL);
+            parameters.Add("Numero", receptionTransfertDechet.NumBL);
+            parameters.Add("Nom", receptionTransfertDechet.Transporteur);
+            parameters.Add("Date", receptionTransfertDechet.DateOp.ToShortDateString());
+            parameters.Add("Heure", receptionTransfertDechet.DateOp.TimeOfDay.ToString());
+            parameters.Add("Brut", receptionTransfertDechet.PCC.ToString());
+            parameters.Add("Tar", receptionTransfertDechet.PCV.ToString());
+            parameters.Add("Net", receptionTransfertDechet.PQS.ToString());
+            parameters.Add("Netrecu", receptionTransfertDechet.PQS.ToString());
+            parameters.Add("Categorie", "Dechets ferreux");
+            parameters.Add("Observation", receptionTransfertDechet.Observation);
+            parameters.Add("ParcId", receptionTransfertDechet.Parc.Id.ToString());
+            parameters.Add("TypeTransport", receptionTransfertDechet.TypeDeTransport.TypeTransport);
+            parameters.Add("User", User.Identity.Name);
+            parameters.Add("Matricule", receptionTransfertDechet.Mat);
+            parameters.Add("DechetOrDiamatre", receptionTransfertDechet.TypeDeDechet.TypeDechet);
 
 
             LocalReport localReport = new LocalReport(path);

@@ -7,13 +7,13 @@
     <UserSecretsId>aspnet-InterfacePontBascule-78f8f2d8-9216-4794-8bef-aad5c001e235</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Content Remove="wwwroot\Reports\ReportPesageLibre.rdlc" />
     <Content Remove="wwwroot\Reports\ReportReceptionAchat.rdlc" />
     <Content Remove="wwwroot\Reports\ReportReceptionRondBeton.rdlc" />
     <Content Remove="wwwroot\Reports\ReportSortieRondBeton.rdlc" />
     <Content Remove="wwwroot\Reports\ReportTransfert.rdlc" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />

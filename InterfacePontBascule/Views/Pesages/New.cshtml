@@ -60,7 +60,7 @@
 
             <div class="form-group">
                 <label asp-for="PCC" class="control-label"></label>
-                <input asp-for="PCC" class="form-control" type="number" value="0" min="0" id="input" readonly="readonly"/>
+                <input asp-for="PCC" class="form-control" type="number"  min="0" id="input" readonly="readonly"/>
                 <span asp-validation-for="PCC" class="text-danger"></span>
 
             </div>
@@ -97,7 +97,7 @@
             <div class="form-group">
 
                 <input type="button" id="myButton" value="Peser" class="btn btn-info" /> |
-                <input type="submit" value="Créer" class="btn btn-primary" />
+                <input type="submit" value="Créer" class="btn btn-primary" id="sbmt" disabled="disabled" />
             </div>
         </form>
     </div>
@@ -114,6 +114,12 @@
 
     <script>
         $(document).ready(function () {
+
+            var input = $("#input").val();
+            if (input > 0) {
+                $('#sbmt').removeAttr('disabled');
+            }
+
             $("#myButton").click(function () {
                 $.ajax({
                     url: "@Url.Action("Peser", "Pesages")", // Replace "ControllerName" with your actual controller name
@@ -121,6 +127,8 @@
                     success: function (result) {
                         // $("#result").text(result);
                         $('#input').val(result);
+                        $('#sbmt').removeAttr('disabled');
+
                     },
                     error: function (xhr, status, error) {
                         console.log("An error occurred: " + error);

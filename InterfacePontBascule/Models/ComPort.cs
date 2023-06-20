@@ -19,6 +19,12 @@ namespace InterfacePontBascule.Models
         public bool DtrEnable { get; set; }
 
         public bool RtsEnable { get; set; }
+
+
+        public int DureeAttente { get; set; } = 1000;
+
+
+
         /*
         serialPort1.Parity = Parity.None
             serialPort1.StopBits = StopBits.One;

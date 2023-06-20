@@ -22,9 +22,7 @@ namespace InterfacePontBascule.Controllers
         // GET: ComPorts
         public async Task<IActionResult> Index()
         {
-              return _context.ComPorts != null ? 
-                          View(await _context.ComPorts.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.ComPorts'  is null.");
+              return View(await _context.ComPorts.ToListAsync());
         }
 
         // GET: ComPorts/Details/5
@@ -56,7 +54,7 @@ namespace InterfacePontBascule.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PortName,BaudeRate,DataBits,ReceivedBytesThreshold,DtrEnable,RtsEnable")] ComPort comPort)
+        public async Task<IActionResult> Create([Bind("Id,PortName,BaudeRate,DataBits,ReceivedBytesThreshold,DtrEnable,RtsEnable,DureeAttente")] ComPort comPort)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +86,7 @@ namespace InterfacePontBascule.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PortName,BaudeRate,DataBits,ReceivedBytesThreshold,DtrEnable,RtsEnable")] ComPort comPort)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PortName,BaudeRate,DataBits,ReceivedBytesThreshold,DtrEnable,RtsEnable,DureeAttente")] ComPort comPort)
         {
             if (id != comPort.Id)
             {
@@ -157,7 +155,7 @@ namespace InterfacePontBascule.Controllers
 
         private bool ComPortExists(int id)
         {
-          return (_context.ComPorts?.Any(e => e.Id == id)).GetValueOrDefault();
+          return _context.ComPorts.Any(e => e.Id == id);
         }
     }
 }

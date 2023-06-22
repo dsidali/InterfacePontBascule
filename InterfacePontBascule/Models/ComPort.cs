@@ -23,7 +23,7 @@ namespace InterfacePontBascule.Models
 
         public int DureeAttente { get; set; } = 1000;
 
-
+        public string StopCharacter { get; set; }
 
         /*
         serialPort1.Parity = Parity.None

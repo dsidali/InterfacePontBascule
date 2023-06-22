@@ -1,6 +1,4 @@
-﻿using System.IO.Ports;
-
-namespace InterfacePontBascule.Models
+﻿namespace InterfacePontBascule.Models
 {
     public class ComPort
     {
@@ -12,7 +10,7 @@ namespace InterfacePontBascule.Models
         public int DataBits { get; set; }
 
 
-     
+
 
         public int ReceivedBytesThreshold { get; set; }
 
@@ -22,6 +20,9 @@ namespace InterfacePontBascule.Models
 
 
         public int DureeAttente { get; set; } = 1000;
+
+
+        public string StopCharacter { get; set; }
 
 
 

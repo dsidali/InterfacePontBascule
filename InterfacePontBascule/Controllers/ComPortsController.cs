@@ -54,7 +54,7 @@ namespace InterfacePontBascule.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PortName,BaudeRate,DataBits,ReceivedBytesThreshold,DtrEnable,RtsEnable,DureeAttente")] ComPort comPort)
+        public async Task<IActionResult> Create([Bind("Id,PortName,BaudeRate,DataBits,ReceivedBytesThreshold,DtrEnable,RtsEnable,DureeAttente,StopCharacter")] ComPort comPort)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace InterfacePontBascule.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PortName,BaudeRate,DataBits,ReceivedBytesThreshold,DtrEnable,RtsEnable,DureeAttente")] ComPort comPort)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PortName,BaudeRate,DataBits,ReceivedBytesThreshold,DtrEnable,RtsEnable,DureeAttente,StopCharacter")] ComPort comPort)
         {
             if (id != comPort.Id)
             {

@@ -41,7 +41,8 @@ namespace InterfacePontBascule.Business
 
                 Thread.Sleep(comPort.DureeAttente);
                 int reading = serialPort1.ReadByte();
-                poidsValueLabel = serialPort1.ReadExisting();
+                //  poidsValueLabel = serialPort1.ReadExisting();
+                poidsValueLabel = serialPort1.ReadTo(comPort.StopCharacter);
                 serialPort1.Close();
                 serialPort1.Dispose();
 

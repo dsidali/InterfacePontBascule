@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterfacePontBascule.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230622121702_addStopCharacterToSerialCommunication")]
-    partial class addStopCharacterToSerialCommunication
+    [Migration("20230622195502_lss")]
+    partial class lss
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -130,9 +130,6 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.Property<bool>("RtsEnable")
                         .HasColumnType("bit");
-
-                    b.Property<string>("StopCharacter")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

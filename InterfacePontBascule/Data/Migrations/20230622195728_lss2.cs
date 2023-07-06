@@ -5,7 +5,7 @@
 namespace InterfacePontBascule.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class addStopCharacterToSerialCommunication : Migration
+    public partial class lss2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

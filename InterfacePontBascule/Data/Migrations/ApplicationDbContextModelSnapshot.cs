@@ -96,7 +96,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasIndex("TypeDeTransportId");
 
-                    b.ToTable("Achats", (string)null);
+                    b.ToTable("Achats");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.ComPort", b =>
@@ -133,7 +133,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ComPorts", (string)null);
+                    b.ToTable("ComPorts");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.Parc", b =>
@@ -164,7 +164,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Parcs", (string)null);
+                    b.ToTable("Parcs");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.Pesage", b =>
@@ -226,7 +226,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasIndex("TypeDeTransportId");
 
-                    b.ToTable("Pesages", (string)null);
+                    b.ToTable("Pesages");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.ReceptionRondBeton", b =>
@@ -301,7 +301,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasIndex("TypeDeTransportId");
 
-                    b.ToTable("ReceptionRondBetons", (string)null);
+                    b.ToTable("ReceptionRondBetons");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.ReceptionTransfertDechet", b =>
@@ -368,7 +368,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasIndex("TypeDeTransportId");
 
-                    b.ToTable("ReceptionTransfertDechets", (string)null);
+                    b.ToTable("ReceptionTransfertDechets");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.ReceptionTransfertRondBeton", b =>
@@ -433,7 +433,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasIndex("TypeDeTransportId");
 
-                    b.ToTable("ReceptionTransfertRondBetons", (string)null);
+                    b.ToTable("ReceptionTransfertRondBetons");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.SortieRondBeton", b =>
@@ -508,7 +508,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasIndex("TypeDeTransportId");
 
-                    b.ToTable("SortieRondBetons", (string)null);
+                    b.ToTable("SortieRondBetons");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.SortieTransfertDechet", b =>
@@ -575,7 +575,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasIndex("TypeDeTransportId");
 
-                    b.ToTable("SortieTransfertDechets", (string)null);
+                    b.ToTable("SortieTransfertDechets");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.SortieTransfertRondBeton", b =>
@@ -640,7 +640,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasIndex("TypeDeTransportId");
 
-                    b.ToTable("SortieTransfertRondBetons", (string)null);
+                    b.ToTable("SortieTransfertRondBetons");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.StockRb", b =>
@@ -656,7 +656,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StockRb", (string)null);
+                    b.ToTable("StockRb");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.TypeDeCamion", b =>
@@ -672,7 +672,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypeDeCamions", (string)null);
+                    b.ToTable("TypeDeCamions");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.TypeDeDechet", b =>
@@ -688,7 +688,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypeDeDechets", (string)null);
+                    b.ToTable("TypeDeDechets");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.TypeDeTransport", b =>
@@ -704,7 +704,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypeDeTransports", (string)null);
+                    b.ToTable("TypeDeTransports");
                 });
 
             modelBuilder.Entity("InterfacePontBascule.Models.TypeProduit", b =>
@@ -720,7 +720,7 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypeProduits", (string)null);
+                    b.ToTable("TypeProduits");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterfacePontBascule.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230622185450_addstopcharacter")]
-    partial class addstopcharacter
+    [Migration("20230622195728_lss2")]
+    partial class lss2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

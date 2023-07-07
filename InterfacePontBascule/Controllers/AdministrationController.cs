@@ -7,10 +7,12 @@ namespace InterfacePontBascule.Controllers
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public AdministrationController(RoleManager<IdentityRole> roleManager)
+        public AdministrationController(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
         {
             _roleManager = roleManager;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -61,6 +63,13 @@ namespace InterfacePontBascule.Controllers
 
 
         public IActionResult ListUsers()
+        {
+            var users = _userManager.Users;
+            return View(users);
+        }
+
+
+        public IActionResult EditUser(string id)
         {
             return View();
         }

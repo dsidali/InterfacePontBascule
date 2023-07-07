@@ -1,9 +1,71 @@
-﻿@model dynamic
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
 
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-}
 
-<h2>title</h2>
+
+<h2>List des utilisateurs</h2>
+
+
+
+<table class="table table-bordered table-striped" id="listachats">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th>
+                Actif
+            </th>
+     
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+         
+                <td>
+                    @Html.DisplayFor(modelItem => item.LockoutEnabled)
+                </td>
+
+                <td>
+                    <a asp-action="EditUser" asp-route-id="@item.Id">Modifier</a> 
+                    @*<a asp-action="Details" asp-route-id="@item.Id">Imp Bon</a> |*@
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts {
+    @*   @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }*@
+
+    <script>
+        $(document).ready(function () {
+            $("#listachats").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#listachats_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+}

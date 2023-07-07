@@ -108,7 +108,7 @@ namespace InterfacePontBascule.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             Roles = GetRoles();
 
-            ViewData["Roles"] = new SelectList(Roles, "Id", "Name");
+            ViewData["Roles"] = new SelectList(Roles, "Name", "Name");
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -192,6 +192,12 @@ namespace InterfacePontBascule.Areas.Identity.Pages.Account
 
 
             return rolez;
+        }
+
+        private async Task AddRoleToUser()
+        {
+            var user = await _userManager.FindByIdAsync("");
+            await _userManager.AddToRoleAsync(user, "user");
         }
     }
 }

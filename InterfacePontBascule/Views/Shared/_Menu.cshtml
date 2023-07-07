@@ -1,92 +1,4 @@
 ﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@*
-
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">InterfacePontBascule</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Achats" asp-action="Index">Achats</a>
-                    </li>
-                 
-                    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Ronds à Beton
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-area="" asp-controller="SortieRondBetons" asp-action="Index">Sortie</a></li>
-                            <li><a class="dropdown-item" asp-area="" asp-controller="ReceptionRondBetons" asp-action="">Reception</a></li>
-           
-                        </ul>
-                    </li>
-                 
-                 
-                 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sortie transferts
-                        </a>   
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-area="" asp-controller="SortieTransfertDechets" asp-action="Index"   >Dechets ferreux</a></li>
-                            <li><a class="dropdown-item" asp-area="" asp-controller="SortieTransfertRondBetons" asp-action="Index">Ronds à béton</a></li>
-           
-                        </ul>
-                    </li>
-                 
-                 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Reception transferts
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-area="" asp-controller="ReceptionTransfertDechets" asp-action="Index">Dechets ferreux</a></li>
-                            <li><a class="dropdown-item" asp-area="" asp-controller="ReceptionTransfertRondBetons" asp-action="Index">Ronds à béton</a></li>
-           
-                        </ul>
-                    </li>
-                 
-                 
-                 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Pesages" asp-action="Index">Pesage Libre</a>
-                    </li>
-                 
-                 
-                 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Parametres
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-area="" asp-controller="ComPorts" asp-action="Index">Configuration Ports COM</a></li>
-                            <li><a class="dropdown-item" href="#">Gestion utilisateurs</a></li>
-           
-                        </ul>
-                    </li>
-
-                </ul>
-                <partial name="_LoginPartial" />
-            </div>
-        </div>
-    </nav>
-</header>
-
-
-
-
-*@
-
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -242,7 +154,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="" asp-controller="ReceptionTransfertRondBetons" asp-action="Index" class="nav-link @ViewBag.active">
+                            <a asp-area="" asp-controller="Administration" asp-action="ListUsers" class="nav-link @ViewBag.active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Gestion des utilisateurs</p>
                             </a>

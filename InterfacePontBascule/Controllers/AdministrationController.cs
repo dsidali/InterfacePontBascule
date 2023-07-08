@@ -68,11 +68,20 @@ namespace InterfacePontBascule.Controllers
             return View(users);
         }
 
-
+        
         public IActionResult EditUser(string id)
         {
             return View();
+        } 
+        
+        public async Task<IActionResult> AddRoleToUser()
+        {
+         
+
+            return Content("shit");
         }
+
+
 
     }
 }

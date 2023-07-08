@@ -147,8 +147,9 @@ namespace InterfacePontBascule.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                      //  await _signInManager.SignInAsync(user, isPersistent: false);
+                      //  return LocalRedirect(returnUrl);
+                      return RedirectToAction("ListUsers", "Administration");
                     }
                 }
                 foreach (var error in result.Errors)

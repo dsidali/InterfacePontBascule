@@ -19,74 +19,41 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
-    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
     @*<link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="~/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     *@
+    
+    
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    
 
     <!-- Theme style -->
     <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed ">
+<body class="hold-transition login-page">
 
 
 
 
-<div class="wrapper">
-
-@*        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-   
-        </ul>
-    
-    
-    
-        <ul class="navbar-nav ml-auto">
-            <!-- Navbar Search -->
-            <li class="nav-item">
-
-                    <partial name="_LoginPartial" />
-            </li>
-
-    
-        </ul>
-    </nav>*@
-
-
-        @*<partial name="_Menu" />*@
-    
-  
-        <div class="content-wrapper">
-            <section class="content">
-                <div class="container-fluid">
-                @RenderBody()
-                </div>
-            </section>
+    <div class="login-box">
+        <div class="login-logo">
+            Interface pont bascule
         </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Merci de vous identifier</p>
+                
+                
+                
+                @RenderBody()
+           
 
-
-
-</div>
-
-@*<partial name="_Menu" />*@
-
-
-@*<div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+            </div>
+            <!-- /.login-card-body -->
+        </div>
     </div>
-
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2023 - InterfacePontBascule - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-</footer>*@
 
 
 
@@ -111,20 +78,6 @@
 
 
 
-
-@*
-    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="~/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="~/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="~/plugins/jszip/jszip.min.js"></script>
-    <script src="~/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="~/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="~/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="~/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="~/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>*@
     <script src="~/dist/js/adminlte.js"></script>
 
     <!-- PAGE PLUGINS -->

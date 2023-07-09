@@ -6,7 +6,8 @@ namespace InterfacePontBascule.ViewModels
     {
         public IdentityUser IdentityUser { get; set; }
 
-        public List<IdentityRole> IdentityRoles { get; set; }
+        public IList<string> IdentityRoles { get; set; }
 
+        public bool IsEnabled { get; set; }
     }
 }

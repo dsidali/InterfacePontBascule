@@ -116,7 +116,14 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Modifier" asp-route-id="@Model?.Id" class="btn btn-primary">Modifier</a> |
+    @if (User.IsInRole("Manager"))
+    {
+        <span> <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Modifier</a> | </span>
+    }
+    else
+    {
+        <span>    <a asp-action="Modifier" asp-route-id="@Model?.Id" class="btn btn-primary">Modifier</a> |  </span>
+    }
     <a asp-action="GetBon" asp-route-id="@Model?.Id" class="btn btn-primary">Afficher bon</a> |
     <a asp-action="Index">Retour</a>
 </div>

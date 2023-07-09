@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+﻿@using Microsoft.AspNetCore.Identity
+@*@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>*@
+@model IEnumerable<InterfacePontBascule.ViewModels.UsersViewModel>
 
 @{
     ViewBag.Title = "title";
@@ -18,14 +20,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                @Html.DisplayNameFor(model => model.IdentityUser.UserName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.IdentityUser.Email)
             </th>
-
+            
             <th>
-                Actif
+                Privilege
+            </th>
+            
+            
+            <th>
+                Compte Désactivé
             </th>
      
             <th>Actions</th>
@@ -36,18 +43,30 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
+                    @Html.DisplayFor(modelItem => item.IdentityUser.UserName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                    @Html.DisplayFor(modelItem => item.IdentityUser.Email)
                 </td>
          
+                
+                
                 <td>
-                    @Html.DisplayFor(modelItem => item.LockoutEnabled)
+                   @foreach (var privilege in item.IdentityRoles)
+                   {
+                        @Html.DisplayFor(m => privilege)
+                   }
                 </td>
 
                 <td>
-                    <a asp-action="EditUser" asp-route-id="@item.Id">Modifier</a> 
+
+                    @Html.DisplayFor(modelItem => item.IdentityUser.LockoutEnabled)
+                </td>
+
+                <td>
+                    <a asp-area="Identity" asp-page="/Account/ResetPassword" asp-route-id="@item.IdentityUser.Email">Init mdp</a> |
+                    <a asp-action="LockUser" asp-route-id="@item.IdentityUser.Id">Désactiver</a> |
+                    <a asp-action="UnlockUser" asp-route-id="@item.IdentityUser.Id">Activer</a>
                     @*<a asp-action="Details" asp-route-id="@item.Id">Imp Bon</a> |*@
                     @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
                 </td>

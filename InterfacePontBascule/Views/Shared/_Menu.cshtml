@@ -137,12 +137,12 @@
                                 </p>
                             </a>
                         </li>
-                    }
-                    else
-                    {
-           <li class="nav-item">
+
+
+
+                        <li class="nav-item">
                             <a href="#" class="nav-link @ViewBag.active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-cogs"></i>
                                 <p>
                                     Parametres
                                     <i class="right fas fa-angle-left"></i>
@@ -155,6 +155,25 @@
                                         <p>Ports COM</p>
                                     </a>
                                 </li>
+                          
+
+                            </ul>
+                        </li>
+
+
+                    }
+                    else
+                    {
+           <li class="nav-item">
+                            <a href="#" class="nav-link @ViewBag.active">
+                                <i class="nav-icon fas fa-cogs"></i>
+                                <p>
+                                    Parametres
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                              
                                 <li class="nav-item">
                                     <a asp-area="" asp-controller="Administration" asp-action="ListUsers" class="nav-link @ViewBag.active">
                                         <i class="far fa-circle nav-icon"></i>

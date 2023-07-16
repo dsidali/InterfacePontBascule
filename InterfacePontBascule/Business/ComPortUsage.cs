@@ -40,14 +40,14 @@ namespace InterfacePontBascule.Business
 
 
                 Thread.Sleep(comPort.DureeAttente);
-                int reading = serialPort1.ReadByte();
+               // int reading = serialPort1.ReadByte();
 
                // poidsValueLabel = serialPort1.ReadExisting();
 
                 //  poidsValueLabel = serialPort1.ReadExisting();
 
-                poidsValueLabel = serialPort1.ReadTo(comPort.StopCharacter);
-               poidsValueLabel =  poidsValueLabel.Trim();
+             var    poidsValueLabelBrut = serialPort1.ReadLine();
+               poidsValueLabel =  TraiterValeur(poidsValueLabelBrut.Trim());
                 serialPort1.Close();
                 serialPort1.Dispose();
 
@@ -64,6 +64,14 @@ namespace InterfacePontBascule.Business
                 //    return poidsValueLabel;
             }
 
+        }
+
+
+
+
+        public string TraiterValeur(string str)
+        {
+            return str.Substring(2, str.IndexOf("\\"));
         }
 
 

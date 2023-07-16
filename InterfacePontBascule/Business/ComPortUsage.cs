@@ -81,7 +81,7 @@ namespace InterfacePontBascule.Business
                 string substring = input.Substring(0, nullIndex);
                 string[] arrayofStrings = substring.Split(' ');
 
-                return arrayofStrings[1];
+                return arrayofStrings[2];
             }
 
             return "0";

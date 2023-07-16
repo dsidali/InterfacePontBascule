@@ -69,9 +69,22 @@ namespace InterfacePontBascule.Business
 
 
 
-        public string TraiterValeur(string str)
+        string TraiterValeur(string input)
         {
-            return str.Substring(2, str.IndexOf("\\")-2);
+            int nullIndex = input.IndexOf('\0');
+
+
+
+
+            if (nullIndex != -1)
+            {
+                string substring = input.Substring(0, nullIndex);
+                string[] arrayofStrings = substring.Split(' ');
+
+                return arrayofStrings[1];
+            }
+
+            return "0";
         }
 
 

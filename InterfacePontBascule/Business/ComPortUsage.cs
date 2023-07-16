@@ -61,7 +61,7 @@ namespace InterfacePontBascule.Business
                 //  MessageBox.Show(e.Message);
                  poidsValueLabel = "0";
 
-                //    return poidsValueLabel;
+                   return poidsValueLabel;
             }
 
         }

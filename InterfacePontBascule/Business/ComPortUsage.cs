@@ -57,9 +57,9 @@ namespace InterfacePontBascule.Business
             catch (Exception e)
             {
                 //    Console.WriteLine(e);
-                throw;
+                //throw;
                 //  MessageBox.Show(e.Message);
-                // poidsValueLabel = "0";
+                 poidsValueLabel = "0";
 
                 //    return poidsValueLabel;
             }

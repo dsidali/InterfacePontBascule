@@ -71,7 +71,7 @@ namespace InterfacePontBascule.Business
 
         public string TraiterValeur(string str)
         {
-            return str.Substring(2, str.IndexOf("\\"));
+            return str.Substring(2, str.IndexOf("\\")-2);
         }
 
 

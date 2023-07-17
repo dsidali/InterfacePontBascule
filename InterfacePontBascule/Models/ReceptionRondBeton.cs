@@ -1,13 +1,15 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using InterfacePontBascule.CustomValidation;
 
 namespace InterfacePontBascule.Models
 {
     public class ReceptionRondBeton
     {
         public int Id { get; set; }
-    
 
 
+        [Display(Name = "Parc")]
         public int ParcId { get; set; }
         public Parc Parc { get; set; }
 
@@ -17,29 +19,40 @@ namespace InterfacePontBascule.Models
 
 
 
-     //   public TimeSpan HeureOP { get; set; }
+        //   public TimeSpan HeureOP { get; set; }
+        [Display(Name = "Bon")]
+        [Required]
         public string NumBonA { get; set; }
+
+        [Display(Name = "Ticket")]
+        [Required]
         public string NumTicket { get; set; }
 
-      
 
 
-       
+
+        [Display(Name = "Date")]
         public DateTime DateOp { get; set; }
+
+        [Required]
         public string Source { get; set; }
 
-
+        [Required]
         public string Transporteur { get; set; }
 
 
-
+        [Display(Name = "Matricule")]
+        [Required]
         public string Mat { get; set; } //Matricule Camion
 
-
+        [Display(Name = "Transport")]
         public int TypeDeTransportId { get; set; }
+        [Display(Name = "Transport")]
         public TypeDeTransport TypeDeTransport { get; set; }//Tosyali or safhadid
 
+        [Display(Name = "Camion")]
         public int TypeDeCamionId { get; set; }
+        [Display(Name = "Camion")]
         public TypeDeCamion TypeDeCamion { get; set; }
 
 
@@ -49,15 +62,22 @@ namespace InterfacePontBascule.Models
 
         public int Diametre { get; set; }
 
-
+        [Display(Name = "Charge")]
+        [PoidsPositif]
         public int PCC { get; set; } //pesage a charge
 
+        [Display(Name = "Tare")]
+        [PoidsPositif]
         public int PCV { get; set; } //pesage a vide
 
+        [Display(Name = "Brut")]
+        [PoidsPositif]
         public int PB { get; set; } //poids brut
 
+        [Display(Name = "Rabais")]
         public int PQRa { get; set; }
 
+        [Display(Name = "Net")]
         public int PQS { get; set; }
 
         public string Observation { get; set; }

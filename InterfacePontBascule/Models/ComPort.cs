@@ -1,6 +1,4 @@
-﻿using System.IO.Ports;
-
-namespace InterfacePontBascule.Models
+﻿namespace InterfacePontBascule.Models
 {
     public class ComPort
     {
@@ -12,13 +10,23 @@ namespace InterfacePontBascule.Models
         public int DataBits { get; set; }
 
 
-     
+
 
         public int ReceivedBytesThreshold { get; set; }
 
         public bool DtrEnable { get; set; }
 
         public bool RtsEnable { get; set; }
+
+
+        public int DureeAttente { get; set; } = 1000;
+
+        public string StopCharacter { get; set; }
+
+      
+
+
+
         /*
         serialPort1.Parity = Parity.None
             serialPort1.StopBits = StopBits.One;

@@ -7,32 +7,28 @@
     <UserSecretsId>aspnet-InterfacePontBascule-78f8f2d8-9216-4794-8bef-aad5c001e235</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Content Remove="wwwroot\Reports\ReportPesageLibre.rdlc" />
     <Content Remove="wwwroot\Reports\ReportReceptionAchat.rdlc" />
     <Content Remove="wwwroot\Reports\ReportReceptionRondBeton.rdlc" />
     <Content Remove="wwwroot\Reports\ReportSortieRondBeton.rdlc" />
     <Content Remove="wwwroot\Reports\ReportTransfert.rdlc" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.7" />
     <PackageReference Include="System.CodeDom" Version="7.0.0" />
     <PackageReference Include="System.IO.Ports" Version="7.0.0" />
     <PackageReference Include="System.Security.Permissions" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Administration\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +37,13 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Achats\New.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Pesages\ListFinished.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Pesages\New.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\ReceptionTransfertDechets\Modifier.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\ReceptionTransfertDechets\New.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\SortieTransfertDechets\New.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\SortieTransfertRondBetons\New.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\SortieTransfertRondBetons\Reprise.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1650,6 +1653,34 @@
     <None Include="wwwroot\plugins\uplot\uPlot.esm.js" />
     <None Include="wwwroot\plugins\uplot\uPlot.iife.js" />
     <None Include="wwwroot\plugins\uplot\uPlot.iife.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Pesages\New.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Pesages\ListFinished.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\SortieTransfertDechets\New.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\ReceptionTransfertDechets\New.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\SortieTransfertRondBetons\New.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\SortieTransfertRondBetons\Reprise.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\ReceptionTransfertDechets\Modifier.cshtml" />
   </ItemGroup>
 
 </Project>

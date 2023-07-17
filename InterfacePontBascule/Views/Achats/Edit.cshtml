@@ -8,6 +8,7 @@
 <h1>Edit</h1>
 
 <h4>Achat</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -61,32 +62,32 @@
             </div>
             <div class="form-group">
                 <label asp-for="DateOP" class="control-label"></label>
-                <input asp-for="DateOP" class="form-control" />
+                <input asp-for="DateOP" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="DateOP" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PCC" class="control-label"></label>
-                <input asp-for="PCC" class="form-control" />
+                <input asp-for="PCC" class="form-control" readonly="readonly" id="pcharge"/>
                 <span asp-validation-for="PCC" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PCV" class="control-label"></label>
-                <input asp-for="PCV" class="form-control" />
+                <input asp-for="PCV" class="form-control" readonly="readonly" id="tare"/>
                 <span asp-validation-for="PCV" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PB" class="control-label"></label>
-                <input asp-for="PB" class="form-control" />
+                <input asp-for="PB" class="form-control" readonly="readonly" id="pbrut" />
                 <span asp-validation-for="PB" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PQRa" class="control-label"></label>
-                <input asp-for="PQRa" class="form-control" />
+                <input asp-for="PQRa" class="form-control" id="rabais" />
                 <span asp-validation-for="PQRa" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PQS" class="control-label"></label>
-                <input asp-for="PQS" class="form-control" />
+                <input asp-for="PQS" class="form-control" readonly="readonly" id="pnet" />
                 <span asp-validation-for="PQS" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -100,16 +101,81 @@
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="button" id="pesercharge" value="Peser charge" class="btn btn-info" /> |
+                <input type="button" id="pesertare" value="Peser tare" class="btn btn-info"/> |
+                <input type="button" id="calculer" value="Calculer" class="btn btn-info" disabled="disabled"/> |
+                <input type="submit" value="Enregistrer" class="btn btn-primary" id="sbmt" disabled="disabled"/>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Retour</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#pesercharge").click(function () {
+                $.ajax({
+                    url: "@Url.Action("Peser", "Pesages")", // Replace "ControllerName" with your actual controller name
+                    type: "GET",
+                    success: function (result) {
+                        // $("#result").text(result);
+                        $('#pcharge').val(result);
+                        $('#tare').removeAttr('disabled');
+
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("An error occurred: " + error);
+                    }
+                });
+
+
+
+
+
+
+                $("#pesertare").click(function () {
+                    $.ajax({
+                        url: "@Url.Action("Peser", "Pesages")", // Replace "ControllerName" with your actual controller name
+                        type: "GET",
+                        success: function (result) {
+                            // $("#result").text(result);
+                            $('#tare').val(result);
+                            $('#calculer').removeAttr('disabled');
+
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("An error occurred: " + error);
+                        }
+                    });
+                });
+
+
+            $("#calculer").click(function () {
+                var chrg = $("#pcharge").val();
+                var tr = $("#tare").val();
+                var rb = $("#rabais").val();
+                var brut = chrg - tr;
+                var net = brut - rb;
+
+                $("#pbrut").val(brut);
+                $("#pnet").val(net);
+
+
+                $('#sbmt').removeAttr('disabled');
+
+            });
+        });
+    </script>
 }

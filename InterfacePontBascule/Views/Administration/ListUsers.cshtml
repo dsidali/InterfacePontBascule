@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Identity
+@*@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>*@
+@model IEnumerable<InterfacePontBascule.ViewModels.UsersViewModel>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Liste des utilisateurs</h2>
+
+
+
+<p>
+    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary">Nouvel utilisateur</a>
+</p>
+
+<table class="table table-bordered table-striped" id="listachats">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdentityUser.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdentityUser.Email)
+            </th>
+            
+            <th>
+                Privilege
+            </th>
+            
+            
+            <th>
+                Compte Désactivé
+            </th>
+     
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdentityUser.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdentityUser.Email)
+                </td>
+         
+                
+                
+                <td>
+                   @foreach (var privilege in item.IdentityRoles)
+                   {
+                        @Html.DisplayFor(m => privilege)
+                   }
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.IdentityUser.LockoutEnabled)
+                </td>
+
+                <td>
+                    <a asp-area="Identity" asp-page="/Account/ResetPassword" asp-route-id="@item.IdentityUser.Email">Init mdp</a> |
+                    <a asp-action="LockUser" asp-route-id="@item.IdentityUser.Id">Désactiver</a> |
+                    <a asp-action="UnlockUser" asp-route-id="@item.IdentityUser.Id">Activer</a>
+                    @*<a asp-action="Details" asp-route-id="@item.Id">Imp Bon</a> |*@
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts {
+    @*   @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }*@
+
+    <script>
+        $(document).ready(function () {
+            $("#listachats").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#listachats_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+}

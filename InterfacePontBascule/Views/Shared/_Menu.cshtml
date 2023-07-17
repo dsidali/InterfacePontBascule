@@ -1,85 +1,200 @@
 ﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
 
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a asp-area="" asp-controller="Home" asp-action="Index" class="brand-link">
+        <img src="~/dist/img/Igaf.png" alt="AdminLTE Logo" class="brand-image" style="opacity: .8">
+        @*<span class="brand-text font-weight-light">SAFHADID</span>*@
+    </a>
 
-
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">InterfacePontBascule</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Achats" asp-action="Index">Achats</a>
-                    </li>
-                 @*   <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Ronds à Beton</a>
-                    </li>*@
-                    
-                 <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                         Ronds à Beton
-                     </a>
-                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                         <li><a class="dropdown-item" asp-area="" asp-controller="SortieRondBetons" asp-action="Index">Sortie</a></li>
-                         <li><a class="dropdown-item" asp-area="" asp-controller="ReceptionRondBetons" asp-action="">Reception</a></li>
-           
-                     </ul>
-                 </li>
-                 
-                 
-                 
-                 <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                         Sortie transferts
-                     </a>   
-                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                         <li><a class="dropdown-item" asp-area="" asp-controller="SortieTransfertDechets" asp-action="Index"   >Dechets ferreux</a></li>
-                         <li><a class="dropdown-item" asp-area="" asp-controller="SortieTransfertRondBetons" asp-action="Index">Ronds à béton</a></li>
-           
-                     </ul>
-                 </li>
-                 
-                 
-                 <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                         Reception transferts
-                     </a>
-                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-area="" asp-controller="ReceptionTransfertDechets" asp-action="Index">Dechets ferreux</a></li>
-                            <li><a class="dropdown-item" asp-area="" asp-controller="ReceptionTransfertRondBetons" asp-action="Index">Ronds à béton</a></li>
-           
-                     </ul>
-                 </li>
-                 
-                 
-                 
-                 <li class="nav-item">
-                     <a class="nav-link text-dark" asp-area="" asp-controller="Pesages" asp-action="Index">Pesage Libre</a>
-                 </li>
-                 
-                 
-                 
-                 <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                         Parametres
-                     </a>
-                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                         <li><a class="dropdown-item" asp-area="" asp-controller="ComPorts" asp-action="Index">Configuration Ports COM</a></li>
-                         <li><a class="dropdown-item" href="#">Gestion utilisateurs</a></li>
-           
-                     </ul>
-                 </li>
-
-                </ul>
-                <partial name="_LoginPartial" />
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">@User.Identity.Name</a>
             </div>
         </div>
-    </nav>
-</header>
+
+        <!-- SidebarSearch Form -->
+   
+        
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                @{
+                    if (!User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Achats" asp-action="Index" class="nav-link @ViewBag.achats">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Achats
+                                    @* <span class="right badge badge-danger">New</span>*@
+                                </p>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item @ViewBag.rbopen">
+                            <a href="#" class="nav-link @ViewBag.rb">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Ronds à Beton
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="SortieRondBetons" asp-action="Index" class="nav-link @ViewBag.rbsrt">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Sortie</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="ReceptionRondBetons" asp-action="Index" class="nav-link @ViewBag.rbrcpt">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Reception</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+
+
+
+
+                        <li class="nav-item @ViewBag.trsfopen">
+                            <a href="#" class="nav-link @ViewBag.trsf">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Sortie transferts
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="SortieTransfertDechets" asp-action="Index" class="nav-link @ViewBag.trsfdech">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Dechets ferreux</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="SortieTransfertRondBetons" asp-action="Index" class="nav-link @ViewBag.trsfrb">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Ronds à béton</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+
+
+
+
+                        <li class="nav-item  @ViewBag.rectrsfopen">
+                            <a href="#" class="nav-link @ViewBag.rectrsf">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Reception transferts
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="ReceptionTransfertDechets" asp-action="Index" class="nav-link @ViewBag.rectrsfdech">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Dechets ferreux</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="ReceptionTransfertRondBetons" asp-action="Index" class="nav-link @ViewBag.rectrsfrb">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Ronds à béton</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+
+
+
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Pesages" asp-action="Index" class="nav-link @ViewBag.pesage">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Pesage libre
+                                    @* <span class="right badge badge-danger">New</span>*@
+                                </p>
+                            </a>
+                        </li>
+
+
+
+               
+
+
+                    }
+                    else
+                    {
+           <li class="nav-item">
+                            <a href="#" class="nav-link @ViewBag.active">
+                                <i class="nav-icon fas fa-cogs"></i>
+                                <p>
+                                    Parametres
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                              
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="ComPorts" asp-action="Index" class="nav-link @ViewBag.active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Ports COM</p>
+                                    </a>
+                                </li>
+
+                              
+
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="Administration" asp-action="ListUsers" class="nav-link @ViewBag.active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Gestion des utilisateurs</p>
+                                    </a>
+                                </li>
+                                
+                                
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="Parcs" asp-action="Index" class="nav-link @ViewBag.active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Infos parc</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    }
+
+                    }
+             
+
+
+
+             
+                
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,139 @@
+﻿@model IEnumerable<InterfacePontBascule.Models.SortieTransfertDechet>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List des sortie transfert dechets traités</h1>
+
+<p>
+    <a asp-action="New" class="btn btn-primary">Nouvelle operation</a>
+</p>
+
+<table class="table table-bordered table-striped" id="listachats">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Parc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumBL)
+            </th>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.Mat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transporteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeDeTransport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeDeCamion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeDeDechet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PCC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PCV)
+            </th>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.PQS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Termine)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Parc.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumBL)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Transporteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeDeTransport.TypeTransport)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeDeCamion.TypeCamion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeDeDechet.TypeDechet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PCC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PCV)
+                </td>
+         
+                <td>
+                    @Html.DisplayFor(modelItem => item.PQS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Termine)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Imp Bon</a> |
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts {
+    @*   @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }*@
+
+    <script>
+        $(document).ready(function () {
+            $("#listachats").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#listachats_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+}

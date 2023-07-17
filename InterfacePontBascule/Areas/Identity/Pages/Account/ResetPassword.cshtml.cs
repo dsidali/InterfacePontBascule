@@ -71,8 +71,14 @@ namespace InterfacePontBascule.Areas.Identity.Pages.Account
 
         }
 
-        public IActionResult OnGet(string code = null)
+       // public IActionResult OnGet(string code = null)
+        public async Task<IActionResult> OnGet(string id = null)
         {
+            var user = await _userManager.FindByEmailAsync(id);
+
+            var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+            
+
             if (code == null)
             {
                 return BadRequest("A code must be supplied for password reset.");
@@ -81,7 +87,7 @@ namespace InterfacePontBascule.Areas.Identity.Pages.Account
             {
                 Input = new InputModel
                 {
-                    Code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code))
+                    Code =  code //Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code))
                 };
                 return Page();
             }

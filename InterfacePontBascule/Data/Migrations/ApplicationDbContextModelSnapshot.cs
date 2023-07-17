@@ -17,7 +17,7 @@ namespace InterfacePontBascule.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "7.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -116,6 +116,9 @@ namespace InterfacePontBascule.Data.Migrations
                     b.Property<bool>("DtrEnable")
                         .HasColumnType("bit");
 
+                    b.Property<int>("DureeAttente")
+                        .HasColumnType("int");
+
                     b.Property<string>("PortName")
                         .HasColumnType("nvarchar(max)");
 
@@ -124,6 +127,9 @@ namespace InterfacePontBascule.Data.Migrations
 
                     b.Property<bool>("RtsEnable")
                         .HasColumnType("bit");
+
+                    b.Property<string>("StopCharacter")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -173,12 +179,15 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Mat")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumBonA")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumTicket")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observation")
@@ -200,6 +209,7 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Transporteur")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeDeCamionId")
@@ -234,12 +244,15 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Mat")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumBonA")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumTicket")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observation")
@@ -264,12 +277,14 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Source")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Termine")
                         .HasColumnType("bit");
 
                     b.Property<string>("Transporteur")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeDeCamionId")
@@ -301,9 +316,11 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Mat")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumBL")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observation")
@@ -322,12 +339,14 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Provenance")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Termine")
                         .HasColumnType("bit");
 
                     b.Property<string>("Transporteur")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeDeCamionId")
@@ -367,9 +386,11 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Mat")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumBL")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observation")
@@ -388,12 +409,14 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Provenance")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Termine")
                         .HasColumnType("bit");
 
                     b.Property<string>("Transporteur")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeDeCamionId")
@@ -425,18 +448,22 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Destination")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Diametre")
                         .HasColumnType("int");
 
                     b.Property<string>("Mat")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumBonA")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumTicket")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observation")
@@ -460,13 +487,11 @@ namespace InterfacePontBascule.Data.Migrations
                     b.Property<int>("ParcId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Source")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("Termine")
                         .HasColumnType("bit");
 
                     b.Property<string>("Transporteur")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeDeCamionId")
@@ -498,12 +523,15 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Destination")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Mat")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumBL")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observation")
@@ -525,6 +553,7 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Transporteur")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeDeCamionId")
@@ -561,15 +590,18 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Destination")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Diametre")
                         .HasColumnType("int");
 
                     b.Property<string>("Mat")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumBL")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observation")
@@ -591,6 +623,7 @@ namespace InterfacePontBascule.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Transporteur")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeDeCamionId")

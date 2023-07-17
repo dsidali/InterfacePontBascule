@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h3>Nouvel achat</h3>
 
-<h4>Achat</h4>
+@*<h4>Nouvel achat</h4>*@
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -67,7 +67,7 @@
 
             <div class="form-group">
                 <label asp-for="PCC" class="control-label"></label>
-                <input asp-for="PCC" class="form-control" type="number" value="0" min="0" id="input" />
+                <input asp-for="PCC" class="form-control" type="number"  min="0" id="input" readonly="readonly"/>
                 <span asp-validation-for="PCC" class="text-danger"></span>
      
             </div>
@@ -103,15 +103,15 @@
             </div>*@
 <div class="form-group">
     
-    <input type="button" id="myButton" value="Get Data" class="btn btn-info"/> | 
-    <input type="submit" value="Create" class="btn btn-primary"/>
+    <input type="button" id="myButton" value="Peser" class="btn btn-info"/> |
+                <input type="submit" value="Créer" class="btn btn-primary" id="sbmt" disabled="disabled" />
 </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Retour</a>
 </div>
 @*<div id="result"></div>*@
 @section Scripts {
@@ -121,6 +121,10 @@
     
     <script>
         $(document).ready(function () {
+            var input = $("#input").val();
+            if (input > 0) {
+                $('#sbmt').removeAttr('disabled');
+            }
             $("#myButton").click(function () {
                 $.ajax({
                     url: "@Url.Action("Peser", "Achats")", // Replace "ControllerName" with your actual controller name
@@ -128,6 +132,7 @@
                     success: function (result) {
                        // $("#result").text(result);
                         $('#input').val(result);
+                       $('#sbmt').removeAttr('disabled');
                     },
                     error: function (xhr, status, error) {
                         console.log("An error occurred: " + error);

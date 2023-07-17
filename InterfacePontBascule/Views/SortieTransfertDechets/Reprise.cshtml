@@ -1,0 +1,142 @@
+﻿@model InterfacePontBascule.Models.SortieTransfertDechet
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Reprise sortie trasnfert dechet</h1>
+
+@*<h4>Achat</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Reprise">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group" hidden>
+                <label asp-for="ParcId" class="control-label"></label>
+                <select asp-for="ParcId" class="form-control" asp-items="ViewBag.ParcId"></select>
+                <span asp-validation-for="ParcId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumBL" class="control-label"></label>
+                <input asp-for="NumBL" class="form-control" readonly="readonly" />
+                <span asp-validation-for="NumBL" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Mat" class="control-label"></label>
+                <input asp-for="Mat" class="form-control" />
+                <span asp-validation-for="Mat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transporteur" class="control-label"></label>
+                <input asp-for="Transporteur" class="form-control" />
+                <span asp-validation-for="Transporteur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Destination" class="control-label"></label>
+                <input asp-for="Destination" class="form-control" />
+                <span asp-validation-for="Destination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeDeTransportId" class="control-label"></label>
+                <select asp-for="TypeDeTransportId" class="form-select" asp-items="ViewBag.TypeDeTransportId"></select>
+                <span asp-validation-for="TypeDeTransportId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeDeCamionId" class="control-label"></label>
+                <select asp-for="TypeDeCamionId" class="form-select" asp-items="ViewBag.TypeDeCamionId"></select>
+                <span asp-validation-for="TypeDeCamionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeDeDechetId" class="control-label"></label>
+                <select asp-for="TypeDeDechetId" class="form-select" asp-items="ViewBag.TypeDeDechetId"></select>
+                <span asp-validation-for="TypeDeDechetId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOp" class="control-label"></label>
+                <input asp-for="DateOp" class="form-control" readonly="readonly" />
+                <span asp-validation-for="DateOp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PCC" class="control-label"></label>
+                <input asp-for="PCC" class="form-control" id="pcharge" min="0" readonly="readonly" />
+                <span asp-validation-for="PCC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PCV" class="control-label"></label>
+                <input asp-for="PCV" class="form-control" id="tare" value="0" min="0" readonly="readonly" />
+                <span asp-validation-for="PCV" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <label asp-for="PQS" class="control-label"></label>
+                <input asp-for="PQS" class="form-control" id="pnet" readonly="readonly" />
+                <span asp-validation-for="PQS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observation" class="control-label"></label>
+                <input asp-for="Observation" class="form-control" value="0" min="0" readonly="readonly" />
+                <span asp-validation-for="Observation" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check" hidden>
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Termine" checked="checked" readonly="readonly" /> @Html.DisplayNameFor(model => model.Termine)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="button" id="pesertare" value="Peser" class="btn btn-info" /> |
+                <input type="button" id="calculer" value="Calculer" class="btn btn-info" disabled="disabled" /> |
+                <input type="submit" value="Enregistrer" class="btn btn-primary" id="sbmt" disabled="disabled" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+    <script>
+        $(document).ready(function () {
+            $("#pesertare").click(function () {
+                $.ajax({
+                    url: "@Url.Action("Peser", "Business")", // Replace "ControllerName" with your actual controller name
+                    type: "GET",
+                    success: function (result) {
+                        // $("#result").text(result);
+                        $('#tare').val(result);
+                        $('#calculer').removeAttr('disabled');
+
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("An error occurred: " + error);
+                    }
+                });
+            });
+
+
+            $("#calculer").click(function () {
+                var chrg = $("#pcharge").val();
+                var tr = $("#tare").val();
+
+                var net = chrg - tr;
+     
+
+            
+                $("#pnet").val(net);
+
+
+                $('#sbmt').removeAttr('disabled');
+
+        });
+    </script>
+}

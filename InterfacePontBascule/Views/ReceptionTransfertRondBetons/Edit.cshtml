@@ -7,7 +7,7 @@
 
 <h1>Edit</h1>
 
-<h4>ReceptionTransfertRondBeton</h4>
+<h4>ReceptionTransfertDechet</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -54,11 +54,13 @@
                 <input asp-for="Mat" class="form-control" />
                 <span asp-validation-for="Mat" class="text-danger"></span>
             </div>
+        
             <div class="form-group">
                 <label asp-for="Diametre" class="control-label"></label>
                 <input asp-for="Diametre" class="form-control" />
                 <span asp-validation-for="Diametre" class="text-danger"></span>
-            </div>
+            </div>      
+            
             <div class="form-group">
                 <label asp-for="PCC" class="control-label"></label>
                 <input asp-for="PCC" class="form-control" />
@@ -96,5 +98,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -39,9 +39,15 @@ namespace InterfacePontBascule.Business
 
 
 
-                Thread.Sleep(3000);
-                int reading = serialPort1.ReadByte();
-                poidsValueLabel = serialPort1.ReadExisting();
+                Thread.Sleep(comPort.DureeAttente);
+               // int reading = serialPort1.ReadByte();
+
+               // poidsValueLabel = serialPort1.ReadExisting();
+
+                //  poidsValueLabel = serialPort1.ReadExisting();
+
+             var    poidsValueLabelBrut = serialPort1.ReadLine();
+               poidsValueLabel =  TraiterValeur(poidsValueLabelBrut.Trim());
                 serialPort1.Close();
                 serialPort1.Dispose();
 
@@ -51,13 +57,34 @@ namespace InterfacePontBascule.Business
             catch (Exception e)
             {
                 //    Console.WriteLine(e);
-                throw;
+                //throw;
                 //  MessageBox.Show(e.Message);
-                // poidsValueLabel = "0";
+                 poidsValueLabel = "0";
 
-                //    return poidsValueLabel;
+                   return poidsValueLabel;
             }
 
+        }
+
+
+
+
+        string TraiterValeur(string input)
+        {
+            int nullIndex = input.IndexOf('\0');
+
+
+
+
+            if (nullIndex != -1)
+            {
+                string substring = input.Substring(0, nullIndex);
+                string[] arrayofStrings = substring.Split(' ');
+
+                return arrayofStrings[2];
+            }
+
+            return "0";
         }
 
 

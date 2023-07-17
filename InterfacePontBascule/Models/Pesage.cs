@@ -1,5 +1,4 @@
 ﻿using InterfacePontBascule.CustomValidation;
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace InterfacePontBascule.Models
@@ -58,12 +57,14 @@ namespace InterfacePontBascule.Models
         public int PCC { get; set; } //pesage a charge
 
         [Display(Name = "Tare")]
+        [PoidsPositif]
         public int PCV { get; set; } //pesage a vide
 
         [Display(Name = "Net")]
+        [PoidsPositif]
         public int QP { get; set; }
 
-      
+
         public string Observation { get; set; }
 
         public bool Termine { get; set; }

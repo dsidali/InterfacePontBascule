@@ -13,7 +13,7 @@ namespace InterfacePontBascule.CustomValidation
             // if (number.Contains("aa"))
 
             int number = Convert.ToInt32(value);
-            if (number > 0)
+            if (number >= 0)
             {
                 return ValidationResult.Success;
             }
